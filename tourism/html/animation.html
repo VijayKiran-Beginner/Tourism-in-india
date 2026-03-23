@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Booking Animation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+            overflow: hidden;
+        }
+        .animation-container {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            transition: transform 1s ease, opacity 1s ease;
+        }
+        .animation-container.fade-out {
+            transform: translateY(-100px);
+            opacity: 0;
+        }
+        /* Progress Bar */
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-top: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #007bff;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Wavy motion */
+        .wave {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0) 50%);
+            animation: wave-motion 1.5s linear infinite;
+        }
+
+        @keyframes wave-motion {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Checkmark Confirmation */
+        .confirmation-message {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            font-size: 24px;
+            color: #28a745;
+            font-weight: bold;
+            transition: opacity 1s ease;
+        }
+        .checkmark {
+            display: none;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #28a745;
+            position: relative;
+            margin: 20px auto;
+            transform: scale(0);
+            opacity: 0;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+        .checkmark:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 60px;
+            border-right: 8px solid white;
+            border-bottom: 8px solid white;
+            transform: translate(-50%, -50%) rotate(45deg);
+            display: none;
+        }
+        /* Activate classes for animations */
+        .progress-bar.active {
+            width: 100%;
+            transition: width 3s ease-in-out;
+        }
+        .checkmark.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .checkmark.active:before {
+            display: block;
+            animation: draw-check 0.6s ease-in-out forwards;
+        }
+        @keyframes draw-check {
+            0% { border-width: 8px; width: 0; height: 0; }
+            100% { width: 40px; height: 60px; }
+        }
+        .confirmation-message.active {
+            opacity: 1;
+        }
+        /* Upward motion animation */
+        @keyframes slideUp {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+    </style> 
+</head>
+<body>
+    
+    <!-- Booking Animation Container -->
+    <div class="animation-container" id="animation-container">
+        <h1 id="booking-status">Processing your payment...</h1>
+        
+        <!-- Progress Bar with Wave -->
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar">
+                <div class="wave"></div>
+            </div>
+        </div>
+
+        <!-- Confirmation Message and Checkmark -->
+        <div class="confirmation-message" id="confirmation-message">Booking Confirmed!</div>
+        <div class="checkmark" id="checkmark"></div>
+    </div>
+
+    <script>
+        function startBooking() {
+            const animationContainer = document.getElementById('animation-container');
+            animationContainer.style.display = 'block';
+
+            // Start the progress bar animation
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.classList.add('active');
+
+            // Step 1: Processing payment (3 seconds)
+            setTimeout(() => {
+                document.getElementById('booking-status').innerText = "Processing your booking...";
+
+                // Step 2: Processing booking (3 seconds)
+                setTimeout(() => {
+                    document.getElementById('booking-status').innerText = "Finalizing booking...";
+
+                    // Step 3: Finalizing booking (1 second)
+                    setTimeout(() => {
+                        progressBar.style.display = 'none';
+                        document.getElementById('confirmation-message').style.display = 'block';
+                        document.getElementById('checkmark').style.display = 'block';
+
+                        // Animate checkmark and confirmation message
+                        document.getElementById('checkmark').classList.add('active');
+                        document.getElementById('confirmation-message').classList.add('active');
+
+                        // Step 4: Booking confirmed (2 seconds)
+                        setTimeout(() => {
+                            // Move everything upward and fade out
+                            animationContainer.classList.add('fade-out');
+                            setTimeout(()=>{
+                                final();
+                            },1500);
+                        }, 2000);
+                    }, 1000);
+                }, 3000);
+            }, 3000);
+        }
+        function final()
+        {
+        const urlParams = new URLSearchParams(window.location.search);
+        const hname = urlParams.get('hname');
+        const checkin = urlParams.get('checkin');
+        const checkout = urlParams.get('checkout');
+        const adults = parseInt(urlParams.get('adults')) || 0;
+        const children = parseInt(urlParams.get('children')) || 0;
+        const totalPrice = urlParams.get('totalPrice');
+        const adultEmails = urlParams.get('adultEmails') ? urlParams.get('adultEmails').split(',') : [];
+        const adultPhones = urlParams.get('adultPhones') ? urlParams.get('adultPhones').split(',') : [];
+        const imageUrl = urlParams.get('imageUrl');
+    
+        const url = 'finalpage.html?hname=' + encodeURIComponent(hname) +
+            '&checkin=' + encodeURIComponent(checkin) +
+            '&checkout=' + encodeURIComponent(checkout) +
+            '&adults=' + encodeURIComponent(adults) +
+            '&children=' + encodeURIComponent(children) +
+            '&totalPrice=' + encodeURIComponent(totalPrice) +
+            '&adultEmails=' + encodeURIComponent(adultEmails) +
+            '&adultPhones=' + encodeURIComponent(adultPhones) +
+            '&imageUrl=' + encodeURIComponent(imageUrl);
+    
+        window.location.href = url;
+        }
+      window.onload= startBooking;
+</script>
+</body>
+</html>

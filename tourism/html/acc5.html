@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Booking</title>
+    <link rel="stylesheet" href="../css/acc5.css">
+</head>
+<body>
+<header class="log">
+<nav class="navbar">
+     <div class="menubar">
+        <a href="./home.html">HOME</a>
+        <a href="./acc5.html">ACCOMODATIONS</a>
+        <a href="./aboutus.html">ABOUT</a>
+        <a href="./help.html">HELP</a>
+        <div class="login-btn"><a href="loginpage - Copy.html">LOGIN</a></div>
+        </div>
+        </nav>
+        </header>
+
+    <div class="container">
+        <div class="header">
+            <div class="app-offer">
+                <!--<img src=".png" alt="ixigo logo">-->
+                <span>Upto 25% OFF on IXIGO App</span>
+               <!--<button class="get-app-btn"></button>-->
+                <button class="install-btn">Install IXIGO</button>
+            </div>
+            <nav class="menu">
+                <a href="#" class="menu-item active" data-section="flights-section">Flights</a>
+                <a href="#" class="menu-item" data-section="hotels-section">Hotels</a>
+                <a href="#" class="menu-item" data-section="trains-section">Trains</a>
+                <a href="#" class="menu-item" data-section="buses-section">Buses</a>
+            </nav>
+        </div>
+
+        <!-- Flights Section -->
+        <div class="booking-section active" id="flights-section">
+            <div class="booking-options">
+                <button class="option active">One Way</button>
+                <button class="option">Round Trip</button>
+            </div>
+
+            <div class="input-group">
+                <label for="from">From</label>
+                <input type="text" id="from" placeholder="Enter Origin">
+            </div>
+
+            <div class="input-group">
+                <label for="to">To</label>
+               <!--<input type="text" id="to" placeholder="Enter Destination">-->
+               <select id="mySelect">
+                <option value="">Select the destination:</option>
+                <option value="two.html">Goa</option>
+                <option value="one.html" >Darjeeling</option>
+                <option value="threee.html">Dwaraka</option>
+                <option value="four.html">manali</option>
+                <!--<option value="">Social Sciences</option>-->
+                </select>
+            </div>
+            <script>
+                function myfunction()
+                {
+                   window.location.href=document.getElementById("mySelect").value;  
+               }
+           </script>
+           
+
+            <div class="input-group">
+                <label for="date">Date</label>
+                <input type="date" id="date">
+            </div>
+
+            <div class="input-group">
+                <label for="travellers">Travellers</label>
+                <input type="text" id="travellers" placeholder="1 Traveller • Economy">
+            </div>
+
+            <div class="input-group special-fares">
+                <label>Special Fares (Optional)</label>
+                <div class="fare-options">
+                    <button>Student</button>
+                    <button>Senior Citizen</button>
+                    <button>Armed Forces</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <input type="checkbox" id="assured">
+                <label for="assured">Always opt for Assured</label>
+                <p>Free cancellation with instant refund</p>
+            </div>
+
+            <button class="search-btn" onclick="myfunction()">Search Flights</button>
+        </div>
+
+        <!-- Hotels Section -->
+        <div class="booking-section" id="hotels-section">
+            <div class="input-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" placeholder="Enter Location">
+            </div>
+
+            <div class="input-group">
+                <label for="check-in">Check-In Date</label>
+                <input type="date" id="check-in">
+            </div>
+
+            <div class="input-group">
+                <label for="check-out">Check-Out Date</label>
+                <input type="date" id="check-out">
+            </div>
+
+            <div class="input-group">
+                <label for="rooms">Rooms</label>
+                <input type="text" id="rooms" placeholder="1 Room">
+            </div>
+
+            <div class="input-group">
+                <label for="adults">Adults</label>
+                <input type="text" id="adults" placeholder="1 Adult">
+            </div>
+
+            <div class="input-group">
+                <label for="children">Children</label>
+                <input type="text" id="children" placeholder="0 Children">
+            </div>
+
+            <div class="input-group">
+                <label for="price">Price Range</label>
+                <input type="text" id="price" placeholder="Any Price">
+            </div>
+
+            <button class="search-btn">Search Hotels</button>
+        </div>
+
+        <!-- Trains Section -->
+        <div class="booking-section" id="trains-section">
+            <div class="input-group">
+                <label for="from-train">From</label>
+                <input type="text" id="from-train" placeholder="Enter Origin">
+            </div>
+
+            <div class="input-group">
+                <label for="to-train">To</label>
+                <input type="text" id="to-train" placeholder="Enter Destination">
+            </div>
+
+            <div class="input-group">
+                <label for="date-train">Date</label>
+                <input type="date" id="date-train">
+            </div>
+
+            <button class="search-btn">Search Trains</button>
+        </div>
+
+        <!-- Buses Section -->
+        <div class="booking-section" id="buses-section">
+            <div class="input-group">
+                <label for="from-bus">Leaving From</label>
+                <input type="text" id="from-bus" placeholder="Enter Origin">
+            </div>
+
+            <div class="input-group">
+                <label for="to-bus">Going To</label>
+                <input type="text" id="to-bus" placeholder="Enter Destination">
+            </div>
+
+            <div class="input-group">
+                <label for="date-bus">Departure Date</label>
+                <input type="date" id="date-bus">
+            </div>
+
+            <button class="search-btn">Search Buses</button>
+        </div>
+
+        <div class="footer">
+            <a href="#">Home</a>
+            <a href="#">Flight Tracker</a>
+            <a href="#">Credit Card</a>
+            <a href="#">Book Visa</a>
+            <a href="#">Plan</a>
+        </div>
+    </div>
+    <script src="js5.js"></script>
+</body>
+</html>

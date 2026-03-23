@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Booking</title>
+    <link rel="stylesheet" href="../css/acc5.css">
+</head>
+<body>
+<header class="log">
+<nav class="navbar">
+     <div class="menubar">
+        <a href="./home.html">HOME</a>
+        <a href="./new1.html">ACCOMODATIONS</a>
+        <a href="./aboutus.html">ABOUT</a>
+        <a href="./help.html">HELP</a>
+        <div class="login-btn" id="login-btn"><a href="loginpage - Copy.html">LOGIN</a></div> 
+        </div>
+        </nav>
+        </header>
+
+    <div class="container">
+        <div class="header">
+            <nav class="menu">
+                <a href="#" class="menu-item active" data-section="flights-section">Select place to visit</a>
+                </nav>
+        </div>
+
+        <!-- Flights Section -->
+        <div class="booking-section active" id="flights-section">
+
+      <!--    <div class="input-group">
+                <label for="from">From</label>
+                <input type="text" id="from" placeholder="Enter Origin" class="origin-input">                
+            </div>-->
+
+            <div class="input-group">
+                <label for="to">To</label>
+               <select id="mySelect">
+                <option value="">Select the destination:</option>
+                <option value="./two.html">Goa</option>
+                <option value="./one.html" >Darjeeling</option>
+                <option value="./threee.html">Dwaraka</option>
+                <option value="./four.html">Manali</option>
+                <option value="./gujarat.html">Gujarat</option>
+                <option value="./agra.html">Agra</option>
+                <option value="./bengaluru.html">Bengalore</option>
+                <option value="./newdelhi.html">New delhi</option>
+                <option value="./tirupati2.html">Tirupathi</option>
+                <option value="./five.html">Chennai</option>
+
+                </select>
+                
+            </div>
+            <script>
+                function myfunction()
+                {
+                   window.location.href=document.getElementById("mySelect").value;  
+               }
+           </script>
+<!--<div class="input-group">
+    <label for="date">Date</label>
+    <input type="date" id="date" class="date-input">
+</div>
+
+<div class="input-group">
+    <label for="travellers">Travellers</label>
+    <input type="text" class="Travellers-input" id="travellers" placeholder="1 Traveller • Economy">
+</div>
+
+<div class="input-group special-fares">
+    <label>Special Fares (Optional)</label>
+    <div class="fare-options">
+        <button>Student</button>
+        <button>Senior Citizen</button>
+        <button>Armed Forces</button>
+    </div>
+</div>
+
+<div class="input-group">
+    <input type="checkbox" id="assured">
+    <label for="assured">Always opt for Assured</label>
+    <p>Free cancellation with instant refund</p>
+</div>-->
+
+<button class="search-btn" onclick="myfunction()">Search place</button>
+<script>
+    var user = JSON.parse(localStorage.getItem("loggedUser"))
+    var loginadd = document.getElementById("login-btn");
+    console.log(user); 
+    loginadd.innerHTML = user;
+</script>
+</div>

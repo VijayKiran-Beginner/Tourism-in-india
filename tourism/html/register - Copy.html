@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body
+        {
+            justify-items: center;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            height: 100vh;
+
+            margin: 0%;
+            background: linear-gradient(90deg,#2381da,#0c456b);
+        }
+        
+        .input_field
+        {
+            outline: none;
+            width: calc(100% - 40px);
+            padding: 10px 20px;
+            font-size: 15px;  
+            background-color: transparent;
+            border: 1px solid silver;
+            border-radius: 5px;
+            border-color: silver;
+            border-style: double;
+            
+        }
+        .input_field:focus
+        {
+            box-shadow: 0px 0px 10px rgba(32, 88, 186, 0.5);
+        }
+
+        .input_field1
+        {
+            outline: none;
+            width: calc(100% - 230px);
+            padding:20px 30px;
+            font-size: 15px;  
+            background-color: transparent;
+            border: 1px solid silver;
+            border-radius: 5px;
+            border-color: silver;
+            border-style: double;
+        }
+
+        .Register-form
+        {
+            text-align: center;
+            padding:40px 20px;
+            width: 100%;
+            max-width: 350px;
+            height: 400px;
+            background-color: white;
+            box-shadow:5px  15px 20px 20px   rgba(0, 0, 0, 0.1); 
+            border-radius: 5px;   
+            animation: slide-in 1.5s forwards;   
+        }
+
+        @keyframes slide-in {
+            from{
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to{
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .Login-button 
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            font-size: 20px;
+            padding: 15px;
+            cursor: pointer;
+            width: 100%;
+            height: 30px;
+            background-color: rgba(32, 88, 186, 0.831);
+            border-radius: 5px;
+            color: white;
+            font-weight: 750;
+            border-color: rgba(32, 88, 186, 0.831);
+            transition: box-shadow 0.3s ease 0s;
+        }
+        .Login-button:hover
+        {
+            background-color: rgba(30, 90, 180, 0.931);
+        }
+
+        .Login-button:active
+        {
+            background-color: rgba(32, 88, 186, 0.831);;
+            transform: scale(0.98);
+        }
+
+        .Remember-me 
+        {
+            display: flex;
+            font-size: 17px;
+            align-items: left;
+            justify-content: left;
+            
+        }
+
+        .Remember-me a
+        {
+            text-decoration: none;
+            color: blue;
+        }
+
+        .Remember-me a:hover
+        {
+            text-decoration: underline;
+        }
+
+        .Remember-me a:active
+        {
+            color:#AA955D;
+        }
+
+        
+        
+        .sign-up 
+        {
+            margin-top: 10px;
+              
+        }
+        .sign-up a
+        {
+            color:blue;
+            text-decoration:none;
+
+        }
+        .sign-up a:hover
+        {
+            text-decoration: underline;
+
+        }
+
+        .sign-up a:active
+        {
+            color: #AA955D;
+        }
+
+        /* password show hide css
+        .input-box
+        {
+            width: 100%;
+            position: relative;
+            margin: 20px 0;
+        }
+        /*.input-box input
+        {
+            outline: 0;
+            border: 0;
+            width: 100%;
+            padding: 10px 20px;
+        }*/
+.input-box
+{
+  padding: 10px 20px;
+}
+        
+
+        .input-box img
+        {
+        
+            height: 20px;
+            cursor: pointer;
+            right: 15px;
+            top: 20px;
+            position: absolute;
+            transform: translateY(-50%);
+            opacity: 0.5;
+            transform: opacity 0.3s;
+        }
+        .input-box img:hover
+        {
+            opacity: 1;
+
+        }
+
+        /* .input-lastname {
+           display: flex;
+           align-items: left;
+           justify-content: left;
+        } */
+        .Login-butto 
+        {
+            margin-top: 20px;
+            font-size: 20px;
+            padding: 15px;
+            cursor: pointer;
+            width: 100%;
+            background-color: rgba(32, 88, 186, 0.831);
+            border-radius: 5px;
+            color: white;
+            font-weight: 750;
+            border-color: rgba(32, 88, 186, 0.831);
+            transition: box-shadow 0.3s ease 0s;
+        }
+        .Login-butto:active
+        {
+            background-color: rgba(32, 88, 186, 0.831);;
+            transform: scale(0.98);
+        }
+    .Login-butto:hover
+    {
+        background-color: rgba(30, 90, 180, 0.931);
+    }
+    </style>
+</head>
+<body>
+   
+    <div class="Register-form" >
+         
+        <h2>Register</h2>
+        
+        <div class="input-box">
+            <input type="text" placeholder="Firstname" class="input_field1" required>
+            
+            <input type="text" placeholder="Lastname" class="input_field1" required>
+            
+        </div>
+
+        <div class="input-box">
+            <input type="email" placeholder="Email" class="input_field" required>
+        </div>
+
+        <div class="input-box">
+            <input type="password" placeholder="Password" class="input_field" required>
+        </div>
+        <div class="input-box">
+            <input type="tel" placeholder="mobile" class="input_field" required>
+        </div>
+        <div>
+        <input type="submit" class="Login-butto">
+            </div><!-- <div class="input-box username">
+                <input type="text" placeholder="Username" class="input_field" required>
+            </div>--
+            <div class="input-box password">
+                <input type="password" placeholder="Password" class="input_field" id="pass" required>
+                <img src="eye-close.png" id="eyeimg">
+            </div> 
+            <div class="Remember-me">
+                <input type="checkbox" name="remember-me" id="remember-me">Remember me<br>           
+                
+            </div>
+            -->
+            
+             <div class="forgot-pass">
+                
+            </div>
+
+            <div class="sign-up" >
+               Already have an Account!<a href="loginpage - Copy.html">Login</a>
+            </div>           
+        
+    </div>
+</body>
+</html>

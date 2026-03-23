@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .payment-options {
+            width: 48%;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .fare-summary {
+            width: 48%;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        .payment-options h2, .fare-summary h2 {
+            margin-bottom: 20px;
+        }
+        .payment-methods ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .payment-methods ul li {
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .payment-methods ul li img {
+            width: 80px;
+            vertical-align: middle;
+            margin-right: 15px;
+        }
+        .payment-methods ul li.active {
+            background-color: #e0f7fa;
+            border-radius: 4px;
+            padding: 5px;
+            border: 2px solid #007bff;
+        }
+        .upi-input {
+            display: none;
+            padding: 20px;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            background-color: #f0f8ff;
+            margin-top: 10px;
+        }
+        .upi-input input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .verify-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left:190px;
+        }
+        .otp-input {
+            display: none;
+            margin-top: 20px;
+        }
+        .otp-input input {
+            padding: 10px;
+            width: 50%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .timer {
+            color: red;
+        }
+        .verified {
+            border-color: green;
+            background-color: #e0ffe0;
+        }
+        .fare-summary span {
+            font-weight: bold;
+        }
+        .fare-summary p {
+            margin: 10px 0;
+        }
+        .fare-summary img {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+        .total-cost {
+            color: black;
+            font-size: 40px;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+            font-weight: bold;
+            background-color: transparent;
+        }
+        .proceed-button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            font-size: 24px;
+            padding: 20px 0;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="payment-options">
+            <h2>Payment Options</h2>
+            <div class="payment-methods">
+                <ul>
+                    <li id="upi-option" onclick="activateUPI()">
+                        <img src="../Images/others/upi.png" alt="UPI logo: blue and white design representing Unified Payments Interface, a digital payment system for direct bank transfers in India">All UPI Options<br>
+                        <small>(pay directly from your Bank Account)</small>
+                    </li>
+                </ul>
+
+                <div id="upi-form" class="upi-input">
+                    <label for="upi-id">Enter UPI ID</label>
+                    <input type="text" id="upi-id" placeholder="mobilenumber@upi">
+                    <button class="verify-button" onclick="verifyUPI()">VERIFY & PAY</button>
+                </div>
+
+                <div id="otp-form" class="otp-input">
+                    <label for="otp">Enter OTP</label>
+                    <input type="text" id="otp" placeholder="Enter OTP">
+                    <span id="timer" class="timer"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="fare-summary">
+            <h2>Fare Summary</h2>
+            <img src="" alt="Hotel Image" id="fare-summary img">
+            <p>Hotel Name:<span id="hname"></span></p>
+            <p>Check-in:<span id="checkin-date"></span></p>
+            <p>Check-out:<span id="checkout-date"></span></p>
+            <p>Room:<span>Normal</span></p>
+            <p>Traveler:<span id="total"></span></p>
+            <p>Email:<span id="user-email"></span></p>
+            <p>Phone:<span id="user-phone"></span></p>
+            <hr>
+            <p>Hotel Fare:<span id="total-price"></span></p>
+            <p>Other Charges:<span>₹900</span></p>
+            <hr>
+            <p><span>Total:</span> ₹<span id="total-fare"></span></p>
+        </div>
+    </div>
+
+    <div class="total-cost">
+        <p>Total Cost:₹<span id="total-fare"></span></p>
+    </div>
+
+    <button class="proceed-button">PROCEED</button>
+
+    <script>
+        function activateUPI() {
+            document.getElementById('upi-option').classList.add('active');
+            document.getElementById('upi-form').style.display = 'block';
+        }
+
+        function verifyUPI() {
+            const upiId = document.getElementById('upi-id').value;
+            
+            if (validateUPI(upiId)) {
+                document.getElementById('upi-id').classList.add('verified');
+                document.getElementById('otp-form').style.display = 'block';
+                startTimer(30); // Start a 30-second timer for OTP
+            } else {
+                alert('Invalid UPI ID. Please try again.');
+            }
+        }
+
+        function validateUPI(upiId) {
+            // For representation purposes, we'll just check if it contains "@upi"
+            return upiId.includes('@upi');
+        }
+
+        function startTimer(seconds) {
+            let timer = seconds;
+            const interval = setInterval(function() {
+                document.getElementById('timer').innerText = ` (${timer} seconds remaining)`;
+                if (timer === 0) {
+                    clearInterval(interval);
+                    document.getElementById('timer').innerText = " OTP expired.";
+                }
+                timer--;
+            }, 1000);
+        }
+    </script>
+    <script>
+        // Get parameters from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const hname = urlParams.get('hname');
+        const checkin = urlParams.get('checkin');
+        const checkout = urlParams.get('checkout');
+        const adults = parseInt(urlParams.get('adults')) || 0;
+        const children = parseInt(urlParams.get('children')) || 0;
+        const totalPrice = urlParams.get('totalPrice');
+        const imageUrl = urlParams.get('imageUrl');
+        const adultEmails = urlParams.get('adultEmails') ? urlParams.get('adultEmails').split(',') : [];
+        const adultPhones = urlParams.get('adultPhones') ? urlParams.get('adultPhones').split(',') : [];
+
+        const totalTravelers = adults + children;
+
+        document.getElementById('hname').innerText = hname;
+        document.getElementById('checkin-date').innerText = checkin;
+        document.getElementById('checkout-date').innerText = checkout;
+        document.getElementById('total').innerText = totalTravelers;
+        document.getElementById('total-price').innerText = totalPrice;
+        document.querySelector('.fare-summary img').src = imageUrl;
+
+        const otherCharges = 900;
+        const totalFare = parseFloat(totalPrice) + otherCharges;
+        document.getElementById('total-fare').innerText = totalFare;
+
+        document.getElementById('user-email').innerText = adultEmails.join(', ');
+        document.getElementById('user-phone').innerText = adultPhones.join(', ');
+    </script>
+</body>
+</html>

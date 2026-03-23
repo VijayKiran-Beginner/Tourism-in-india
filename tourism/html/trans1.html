@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Train Transportation Cost Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        .required::after {
+            content: '*';
+            color: red;
+            margin-left: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .calculate-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #f57c00;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calculate-btn:hover {
+            background-color: #d56800;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #f57c00;
+            text-align: center;
+        }
+        .boxed-paragraph{
+        border: 2px solid #333; /* Border of the box */
+            padding: 20px;          /* Spacing inside the box */
+            width: 400px;           /* Fixed width of the box */
+            margin: 20px auto;      /* Center the box horizontally */
+            background-color: #f4f4f4; /* Optional background color */
+        }
+        .thank-you {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f57c00, #ffcc80);
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: bold;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 40px auto;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 1.5s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Add a decorative gradient border effect */
+        .thank-you::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #ff8a00, #ff3d00, #ffd600);
+            border-radius: 20px;
+            z-index: -1;
+            animation: glowing 5s infinite;
+        }
+
+        /* Subtle glowing animation */
+        @keyframes glowing {
+            0% {
+                filter: blur(3px);
+            }
+            50% {
+                filter: blur(6px);
+            }
+            100% {
+                filter: blur(3px);
+            }
+        }
+
+        /* Smooth fade-in animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Optional: Style for the body background for better contrast */
+        body {
+            background-color: #e1f5fe;
+        }
+        .book-button {
+            background-color: #f57c00;
+            font-size: 1.2rem;
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left:200px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<marquee bgcolor="yellow">Select the From location Wisely that you booked your hotel tickets for generation of successful Accurate package.</marquee>
+    <h1>Transportation Cost Calculator</h1>
+
+    <div class="container">
+        <form id="transportForm">
+            <!-- Departure Location -->
+            <label for="fromLocation" class="required">From Location</label>
+            <select id="fromLocation" required>
+                <option value="">Select Location</option>
+                <option value="NewDelhi">NewDelhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Pune">Pune</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Lucknow">Lucknow</option>
+                <option value="Kanpur">Kanpur</option>
+                <option value="Surat">Surat</option>
+                <option value="Patna">Patna</option>
+                <option value="Bhopal">Bhopal</option>
+                <option value="Agra">Agra</option>
+            </select>
+
+            <!-- Destination Location -->
+            <label for="toLocation" class="required">To Location</label>
+            <select id="toLocation" required>
+                <option value="">Select the destination:</option>
+                <option value="Goa">Goa</option>
+                <option value="Darjeeling">Darjeeling</option>
+                <option value="Dwaraka">Dwaraka</option>
+                <option value="Manali">Manali</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Agra">Agra</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="NewDelhi">New delhi</option>
+                <option value="Tirupathi">Tirupati</option>
+                <option value="Chennai">Chennai</option>
+            </select>
+
+            <!-- Number of Adults -->
+            <label for="adults" class="required">Number of Adults</label>
+            <p>Adults:<span id="adults"></span></p>
+             
+            <!-- Number of Children -->
+            <label for="children" class="required">Number of Children</label>
+            <p>Children:<span id="children"></span></p>
+
+            <!-- Button to calculate -->
+            <button class="calculate-btn" type="submit">Calculate Cost</button>
+
+            <!-- Display the result -->
+            <p class="result">Result:₹<span id="result"></span></p>
+            <p class="result">You already Paid for Hotel cost:₹<span id="price"></span></p>
+            <p class="result">Total Cost:₹<span id="Total"></span></p>
+            <p class="result">Package With Return Ticket:₹<span id="Total1"></span></p>
+            <p style="justify-content: center;display: flex;">By Including allowance for Local transport,Translaters,Local Attraction fee we get Final Package.</p>
+            <div class="boxed-paragraph"><p class="result">Final Package:₹<span id="Total2"></span></p>
+        <p class="result">for <span id="adults1"></span> Adult and <span id="children1"></span> Children</p>
+        <p style="justify-content: center;display: flex;">Final Package with including Paid Hotel fee</p>
+        <p class="result">Final Package:₹<span id="Total3"></span></p><p class="result">for <span id="adults2"></span> Adult and <span id="children2"></span> Children</p>             
+        <p style="justify-content: center;display: flex;">Final package without including paid Hotel fee</p>
+
+    </div>
+    </form>
+    <div id="message" class="thank-you">
+        Thank you for choosing us! We hope you had a wonderful journey. See you next time!
+    </div>
+   
+<a class="book-button" href="home.html">Back to Home</a>
+    <script>
+        // Cost per adult and child for each route
+        const costPerPerson = {
+    "NewDelhi-Goa": 3000,
+    "NewDelhi-Darjeeling": 2500,
+    "NewDelhi-Dwaraka": 2800,
+    "NewDelhi-Manali": 2200,
+    "NewDelhi-Gujarat": 2000,
+    "NewDelhi-Agra": 1500,
+    "NewDelhi-Bangalore": 3500,
+    "NewDelhi-Tirupati": 1800,
+    "NewDelhi-Chennai": 2400,
+    "Mumbai-Goa": 2500,
+    "Mumbai-Darjeeling": 3000,
+    "Mumbai-Dwaraka": 3200,
+    "Mumbai-Manali": 2800,
+    "Mumbai-Gujarat": 2000,
+    "Mumbai-Agra": 2500,
+    "Mumbai-Bangalore": 2600,
+    "Mumbai-Tirupati": 2200,
+    "Mumbai-Chennai": 2700,
+    "Kolkata-Goa": 3200,
+    "Kolkata-Darjeeling": 2000,
+    "Kolkata-Dwaraka": 3000,
+    "Kolkata-Manali": 3500,
+    "Kolkata-Gujarat": 2700,
+    "Kolkata-Agra": 1500,
+    "Kolkata-Bangalore": 3200,
+    "Kolkata-Tirupati": 2400,
+    "Kolkata-Chennai": 2900,
+    "Bangalore-Goa": 2500,
+    "Bangalore-Darjeeling": 3000,
+    "Bangalore-Dwaraka": 2800,
+    "Bangalore-Manali": 2700,
+    "Bangalore-Gujarat": 2100,
+    "Bangalore-Agra": 2000,
+    "Bangalore-Tirupati": 1800,
+    "Bangalore-Chennai": 1500,
+    "Chennai-Goa": 2600,
+    "Chennai-Darjeeling": 3100,
+    "Chennai-Dwaraka": 3000,
+    "Chennai-Manali": 2900,
+    "Chennai-Gujarat": 2300,
+    "Chennai-Agra": 2000,
+    "Chennai-Bangalore": 1700,
+    "Chennai-Tirupati": 1200,
+    "Hyderabad-Goa": 2700,
+    "Hyderabad-Darjeeling": 3100,
+    "Hyderabad-Dwaraka": 2900,
+    "Hyderabad-Manali": 2800,
+    "Hyderabad-Gujarat": 2400,
+    "Hyderabad-Agra": 2100,
+    "Hyderabad-Bangalore": 1900,
+    "Hyderabad-Tirupati": 1600,
+    "Hyderabad-Chennai": 1500,
+    "Ahmedabad-Goa": 2800,
+    "Ahmedabad-Darjeeling": 3200,
+    "Ahmedabad-Dwaraka": 2500,
+    "Ahmedabad-Manali": 2900,
+    "Ahmedabad-Gujarat": 2000,
+    "Ahmedabad-Agra": 2400,
+    "Ahmedabad-Bangalore": 2300,
+    "Ahmedabad-Tirupati": 2100,
+    "Ahmedabad-Chennai": 2200,
+    "Pune-Goa": 2700,
+    "Pune-Darjeeling": 3100,
+    "Pune-Dwaraka": 2900,
+    "Pune-Manali": 2700,
+    "Pune-Gujarat": 2000,
+    "Pune-Agra": 2100,
+    "Pune-Bangalore": 2200,
+    "Pune-Tirupati": 2000,
+    "Pune-Chennai": 2300,
+    "Jaipur-Goa": 2900,
+    "Jaipur-Darjeeling": 2500,
+    "Jaipur-Dwaraka": 2800,
+    "Jaipur-Manali": 2400,
+    "Jaipur-Gujarat": 2100,
+    "Jaipur-Agra": 1600,
+    "Jaipur-Bangalore": 2900,
+    "Jaipur-Tirupati": 2700,
+    "Jaipur-Chennai": 2500,
+    "Lucknow-Goa": 3000,
+    "Lucknow-Darjeeling": 2600,
+    "Lucknow-Dwaraka": 2900,
+    "Lucknow-Manali": 2300,
+    "Lucknow-Gujarat": 2200,
+    "Lucknow-Agra": 1200,
+    "Lucknow-Bangalore": 3100,
+    "Lucknow-Tirupati": 2700,
+    "Lucknow-Chennai": 2600,
+    "Kanpur-Goa": 3100,
+    "Kanpur-Darjeeling": 2900,
+    "Kanpur-Dwaraka": 3200,
+    "Kanpur-Manali": 2500,
+    "Kanpur-Gujarat": 2200,
+    "Kanpur-Agra": 1400,
+    "Kanpur-Bangalore": 3000,
+    "Kanpur-Tirupati": 2600,
+    "Kanpur-Chennai": 2700,
+    "Surat-Goa": 2900,
+    "Surat-Darjeeling": 3100,
+    "Surat-Dwaraka": 2800,
+    "Surat-Manali": 2700,
+    "Surat-Gujarat": 2100,
+    "Surat-Agra": 1500,
+    "Surat-Bangalore": 2300,
+    "Surat-Tirupati": 2000,
+    "Surat-Chennai": 2400,
+    "Patna-Goa": 3200,
+    "Patna-Darjeeling": 3000,
+    "Patna-Dwaraka": 2800,
+    "Patna-Manali": 2600,
+    "Patna-Gujarat": 2300,
+    "Patna-Agra": 1800,
+    "Patna-Bangalore": 2500,
+    "Patna-Tirupati": 2200,
+    "Patna-Chennai": 2100,
+    "Bhopal-Goa": 3000,
+    "Bhopal-Darjeeling": 2800,
+    "Bhopal-Dwaraka": 2700,
+    "Bhopal-Manali": 2500,
+    "Bhopal-Gujarat": 2200,
+    "Bhopal-Agra": 1700,
+    "Bhopal-Bangalore": 2800,
+    "Bhopal-Tirupati": 2500,
+    "Bhopal-Chennai": 2300,
+    "Agra-Goa": 2500,
+    "Agra-Darjeeling": 2300,
+    "Agra-Dwaraka": 2400,
+    "Agra-Manali": 2000,
+    "Agra-Gujarat": 1500,
+    "Agra-Bangalore": 1800,
+    "Agra-Tirupati": 1600,
+    "Agra-Chennai": 1400,
+    "Tirupati-Goa": 3500, 
+    "Tirupati-Darjeeling": 4200,
+    "Tirupati-Dwaraka": 3500,
+    "Tirupati-Manali": 4000,
+    "Tirupati-Gujarat": 3700,
+    "Tirupati-Agra": 3300,
+    "Tirupati-Bangalore": 3900,
+    "Tirupati-NewDelhi": 1800,
+    "Tirupati-Chennai": 3200,
+    "Goa-Darjeeling": 4000,
+    "Goa-Dwaraka": 3200,
+    "Goa-Manali": 3800,
+    "Goa-Gujarat": 3300,
+    "Goa-Agra": 2900,
+    "Goa-Bangalore": 3600,
+    "Goa-NewDelhi": 3500,
+    "Goa-Tirupati": 3500,
+    "Goa-Chennai": 3400
+};
+    // Get parameters from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const adults = parseInt(urlParams.get('adults')) ||0;
+    const children =parseInt(urlParams.get('children'))||0;
+    document.getElementById('adults').innerText=adults;
+    document.getElementById('children').innerText=children;
+
+document.getElementById('transportForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const fromLocation = document.getElementById('fromLocation').value;
+    const toLocation = document.getElementById('toLocation').value;
+    if (!fromLocation || !toLocation || isNaN(adults) || isNaN(children)) {
+        alert("Please fill out all fields with valid values.");
+        return;
+    }
+
+    if (fromLocation === toLocation) {
+        alert("Departure and destination locations cannot be the same.");
+        return;
+    }
+
+    const routeKey = fromLocation + '-' + toLocation;
+    const reverseRouteKey = toLocation + '-' + fromLocation;
+    let totalCost = 0;
+
+    if (costPerPerson[routeKey]) {
+        const adultCost = costPerPerson[routeKey];
+        const childCost = adultCost * 0.5; // Child cost is 50% of adult cost
+        totalCost = (adultCost * adults) + (childCost * children);
+    } else if (costPerPerson[reverseRouteKey]) {
+        const adultCost = costPerPerson[reverseRouteKey].adult;
+        const childCost = adultCost * 0.5; // Child cost is 50% of adult cost
+        totalCost = (adultCost * adults) + (childCost * children);
+    } else {
+        alert("No direct route found between these locations.");
+        return;
+    }
+    const price = parseInt(urlParams.get('total-price')) ||0;
+    document.getElementById('result').textContent= totalCost;
+    document.getElementById('price').textContent = price;
+    const TP = price + totalCost;
+    document.getElementById('Total').textContent = TP;
+    const TP1= TP + totalCost;
+    document.getElementById('Total1').textContent = TP1;
+    const oth= 3000;
+    const TP2 = TP1 + oth;
+    document.getElementById('Total2').textContent = TP2;
+    document.getElementById('adults1').textContent = adults;
+    document.getElementById('children1').textContent = children;
+    const TP3= (2*totalCost) + oth;
+    document.getElementById('Total3').textContent = TP3;
+    document.getElementById('adults2').textContent = adults;
+    document.getElementById('children2').textContent = children;
+});
+    </script>
+
+</body>
+</html>

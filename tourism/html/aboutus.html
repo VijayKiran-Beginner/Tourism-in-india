@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INDIAN TOURISM</title>
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="menubar">
+       <a href="./home.html">HOME</a>
+       <a href="./new1.html">ACCOMODATIONS</a>
+       <a href="./aboutus.html">ABOUT</a>
+       <a href="./help.html">HELP</a>
+       <div class="login-btn" id="login-btn"><a href="./loginpage - Copy.html">LOGIN</a>  </div>
+       
+    </div>
+</nav>
+
+<header class="hero">
+<div class="overlay">
+<h1>We help travelers</h1>
+</div>
+</header>
+<section class="services">
+<div class="service">
+<div class="icon"><img src="../Images/others/bag-removebg-preview.png" alt="Travel Icon"></div>
+<h2>Travel</h2>
+<p>We provide travelling information and shows famous locations which may familiar with your thoughts.</p>
+</div>
+<div class="service">
+<div class="icon"><img src="../Images/others/benefit1.png" alt="Benefits Icon" height="200" style="padding-top:23px"></div>
+<h2>Bookings</h2>
+<p>We provide an interface for an bookings of your tickets to supportive to your journey.</p>
+</div>
+<div class="service">
+<div class="icon"><img src="../images/others/hotel-removebg-preview.png" alt="Hotel Icon" height="240" style="padding-right:24px;"></div>
+<h2>Hotels</h2>
+<p>We provide accomodations based on the market ratings and quality.</p>
+</div>
+<div class="service">
+<div class="icon"><img src="../Images/others/local.png" alt="Awards Icon"></div>
+<h2>Local Attractions</h2>
+<p>We provide an local attractions that must to be visit which is an proposal system of our project.</p>
+</div>
+</section>
+<footer>
+  <p>Copyright © 2024 all rights reserved <u style="color:red;">contact us: <a href="tel:8341586474"><span style="color: black;"><i class="fa-solid fa-phone"></i></span></a> </u>.</p>
+</footer>
+<div class="backhome">
+  <a href="./home.html">&gt; &gt;Back to home</a>
+</div>
+<script>
+        var user = JSON.parse(localStorage.getItem("loggedUser"))
+        var loginadd = document.getElementById("login-btn");
+        console.log(user); 
+        loginadd.innerHTML = user;
+    </script>
+</body>
+</html>

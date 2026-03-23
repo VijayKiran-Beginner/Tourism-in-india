@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+    <link rel="stylesheet" href="../css/help2.css">
+    <style>
+        .navbar
+    {
+        
+        display: flex;
+        padding: 20px 20px;
+        align-items: center;
+        width: 97%;            
+    }
+    .navbar a
+    {
+        text-decoration: none;
+        padding: 10px 20px;
+        color: #090706 ;
+        border-radius: 20px;
+    }
+
+    .navbar a:hover
+    {
+        color: white;
+        background-color: rgba(0, 0, 0, 0.4);
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease 0s;
+    }
+
+    .navbar a:active
+    {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+    
+    .menubar
+    {
+        width: 100%;
+    }
+    .login-btn
+    {
+        float: right;
+    }
+    .log{
+        background-color:rgb(234, 87, 13);
+        border-radius: none;
+
+    }
+   /* .ex{
+        background: no-repeat;
+        background-size: cover;
+    }*/
+
+</style>
+</head>
+<body>
+<header class="log">
+<nav class="navbar">
+     <div class="menubar">
+        <a href="home.html">HOME</a>
+        <a href="new1.html">ACCOMODATIONS</a>
+        <a href="aboutus.html">ABOUT</a>
+        <a href="help.html">HELP</a>
+        <div class="login-btn" id="login-btn"></div>
+        </div>
+        </nav>
+        </header>
+        <div class="header-top">
+            <div class="logo">INDIAN TOURISM | Help</div>
+            <div class="nav-links">
+                <a href="home.html">Back to Home</a> | 
+                <a href="#">English (US)</a>
+            </div>
+        </div>
+        <div class="search-section">
+            <h1>How can we help you?</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Enter your problem">
+                <button>🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="help-categories">
+        <div class="category-box green">
+            <img src="../Images/others/acc.jpeg" height="100">
+         <h3>Accounts</h3>
+            <p>Update your login information and manage your data.</p>
+        </div>
+        <div class="category-box blue">
+            <img src="../Images/others/travel.jpeg" height="100">
+            <h3>Travel Info</h3>
+            <p>We always recommend most popular tourists destination places if its not ask us on search.</p>
+        </div>
+        <div class="category-box teal">
+            <img src="../Images/others/bad.jpg" height="100">
+            <h3>Bad Visuals</h3>
+            <p>Sorry for your inconvinience,we try to do better look for next time.</p>
+        </div>
+        <div class="category-box orange">
+            <img src="../Images/others/uncet.png" height="100">
+            <h3>Uncertain Info</h3>
+            <p>We provide accurate information regarding to current trend.</p>
+        </div>
+        <div class="category-box purple">
+            <img src="../Images/others/less.jpeg" height="100">
+            <h3>Less Communication</h3>
+            <p>You can communicate through our help us section by texting with us with in business hours.</p>
+        </div>
+        <div class="category-box red">
+            <img src="../Images/others/response.jpeg" height="100">
+            <h3>Not Mobile responsive</h3>
+            <p>Mobile responsive is not available,Further we'll look on it.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="articles-section">
+            <h2>#FAQ's</h2>
+            <ul>
+              <p><b>Q1) WHERE2GO?</b></p>
+                <li><b>A)</b> Best Tourists Places Recommendations on Home page,Select them.</li>
+                <p><b>Q2) How can i do transactions for hotels and buses?</b></p>
+                <li><b>A)</b>It is available in bookings and accomodation sections respectively.</li>
+                <p><b>Q3) Can i access your services without sign in?</b></p>
+                <li><b>A)</b>Probably No,If you're new user you need to register first,If you're already have an account then do login to get your data.</li>
+            </ul>
+            <h2>Recent articles</h2>
+            <ul>
+                <p><b>@Why our website only?</li></p></b>
+                <li>See ABOUT US of our website to know what we provide.</li>
+            </ul>
+        </div>
+    </footer>
+    <script>
+        var user = JSON.parse(localStorage.getItem("loggedUser"))
+        var loginadd = document.getElementById("login-btn");
+        console.log(user); 
+        loginadd.innerHTML = user;
+    </script>
+</body>
+</html>

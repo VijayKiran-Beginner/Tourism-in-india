@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #002d62;
+            text-align: center;
+        }
+        .ticket-details {
+            margin-bottom: 20px;
+        }
+        .ticket-details p {
+            margin: 10px 0;
+        }
+        .ticket-details span {
+            font-weight: bold;
+        }
+        .confirmation-message {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border: 1px solid #d1d1d1;
+            margin-bottom: 20px;
+            justify-content: center;
+            display: flex;
+        }
+        .confirmation-message p {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .hotel-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .guest-list {
+            margin-bottom: 20px;
+        }
+        .guest-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .guest-list ul li {
+            margin-bottom: 10px;
+        }
+        .guest-list span {
+            font-weight: bold;
+        }
+        .total-price {
+            font-size: 20px;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .home {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left:550px;
+            text-decoration: none;
+        }
+        .transport
+        {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 160px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    </head>
+    <h2>Hotel Booking Confirmation</h2>
+
+    <!-- Hotel Image -->
+    <img id="hotel-image" src="" alt="Hotel Image" class="hotel-image">
+
+    <!-- Booking Details -->
+    <div class="ticket-details">
+        <p>Hotel Name: <span id="hname"></span></p>
+        <p>Check-in Date: <span id="checkin-date"></span></p>
+        <p>Check-out Date: <span id="checkout-date"></span></p>
+        <p>Duration: <span id="duration"></span> nights</p>
+        <p>Adults: <span id="adults"></span></p>
+        <p>Children: <span id="children"></span></p>
+    </div>
+
+    <!-- Confirmation Message -->
+    <div class="confirmation-message">
+        <p>Thank you for booking with us! Your booking is confirmed.</p>
+    </div>
+
+    <!-- Guest List -->
+    <div class="guest-list">
+        <h3>Guest Details</h3>
+        <p>Emails: <span id="user-email"></span></p>
+        <p>Contact Numbers: <span id="user-phone"></span></p>
+    </div>
+
+    <!-- Total Price -->
+    <p class="total-price">Total Amount Paid: ₹<span id="total-price"></span></p>
+
+            <!-- Confirmation Message -->
+    <div class="confirmation-message">
+        <p>CHECK IN AND PROCEED AT HOTEL.</p>
+    </div>
+    <a class="home" href="home.html">Back to Home</a>
+    <button class="transport" onclick="fun()">View Transport Charges</button>
+<script>
+ 
+    // Get parameters from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const hname = urlParams.get('hname');
+    const checkin = urlParams.get('checkin');
+    const checkout = urlParams.get('checkout');
+    const adults = parseInt(urlParams.get('adults')) ||0;
+    const children = parseInt(urlParams.get('children')) ||0;
+    const totalPrice = urlParams.get('totalPrice');
+    const adultEmails = urlParams.get('adultEmails') ? urlParams.get('adultEmails').split(',') : [];
+    const adultPhones = urlParams.get('adultPhones') ? urlParams.get('adultPhones').split(',') : [];
+    const imageUrl = urlParams.get('imageUrl');
+
+    // Calculate duration
+    const checkinDate = new Date(checkin);
+    const checkoutDate = new Date(checkout);
+    const duration = (checkoutDate - checkinDate) / (1000 * 3600 * 24); // Convert to days
+
+    // Display the information on the page
+    document.getElementById('hname').innerText = hname;
+    document.getElementById('checkin-date').innerText = checkin;
+    document.getElementById('checkout-date').innerText = checkout;
+    document.getElementById('duration').innerText = duration;
+    document.getElementById('adults').innerText = adults;
+    document.getElementById('children').innerText = children;
+    document.getElementById('total-price').innerText = totalPrice;
+    document.getElementById('hotel-image').src = imageUrl;
+    document.getElementById('user-email').innerText = adultEmails.join(', ');
+    document.getElementById('user-phone').innerText = adultPhones.join(', ');
+   
+    function fun(){
+    const url = 'trans1.html?adults=' + encodeURIComponent(adults) +
+            '&children=' + encodeURIComponent(children)+
+            '&total-price=' +encodeURIComponent(totalPrice);
+        // Redirect to the payment page
+        window.location.href = url;
+    }
+</script>
+
+
+</body>
+</html>

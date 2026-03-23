@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goa - Travel Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('g10.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+         /* navbar stylings */
+
+         .navbar
+        {
+            
+            display: flex;
+            padding: 20px 20px;
+            align-items: center;
+            width: 97%; 
+            background-color: #274f5c83;       
+        }
+        .navbar a
+        {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white ;
+            border-radius: 20px;
+        }
+
+        .navbar a:hover
+        {
+            color: orangered;
+            background-color: rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease 0s;
+        }
+
+        .navbar a:active
+        {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .menubar
+        {
+            width: 100%;
+            
+            
+        }
+        .login-btn
+        {
+            float: right;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #f9a825;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .gallery img {
+            margin: 10px;
+            border-radius: 10px;
+            width: 30%;
+            height: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #f9a825;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hotels, .places {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .hotel-block, .place-block {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px;
+            width: 30%;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hotel-block:hover, .place-block:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .hotel-block img, .place-block img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 4px solid #f9a825;
+        }
+
+        .hotel-block h3, .place-block h3 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .hotel-block p, .place-block p {
+            padding: 0 10px 20px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #f9a825;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="menubar">
+           <a href="home.html">HOME</a>
+           <a href="new1.html">ACCOMODATIONS</a>
+           <a href="aboutus.html">ABOUT</a>
+           <a href="help.html">HELP</a>
+           <div class="login-btn" id="login-btn"><a href="loginpage - Copy.html">LOGIN</a>  </div>
+           
+        </div>
+   </nav>
+    <h1>Welcome to Goa</h1>
+
+    <div class="content">
+        <div class="gallery">
+            <img src="../Images/goa/G2.jpg" alt="Goa Image 1">
+            <img src="../Images/goa/G3.jpg" alt="Goa Image 2">
+            <img src="../Images/goa/G4.webp" alt="Goa Image 3">
+        </div>
+
+        <p>This place is known for its famous beaches, culture, climate, and historical places. 
+            You may find colourful architecture, lush greenery, and breathtaking beaches here.
+             Goa is a perfect blend of Portugal and Indian culture. People get attracted to this
+              place to experience world-class music, dance, and sunset.
+        </p>
+        <marquee bgcolor="green">Click on hotel images for Booking of hotel.</marquee>
+        <div class="section-title">Hotels in Goa</div>
+        <div class="hotels">
+            <div class="hotel-block">
+               <a href="two1.html" ><img src="../Images/goa/G5.jpg" alt="Hotel 1"></a>
+                <h3>Ticlo resorts</h3>
+                <p>Family Type resort in close proximity to the world famous Calangute beach.
+                     Centrally located with welcoming staff at your service.
+                </p>
+            </div>
+            <div class="hotel-block">
+                <a href="two2.html"><img src="../Images/goa/G6.jpg" alt="Hotel 2"></a>
+                <h3>resort primo bom terra verde</h3>
+                <p>Hotel Rates Up to 80% Off — Self-service. No Booking Fees. Save money & Time! The Best Travel Tips on Agoda.
+                     Get Special Rates on Your Accommodation. Read Millions Of Genuine Reviews. Up To 80% Off.</p>
+            </div>
+            <div class="hotel-block">
+               <a href="two3.html"> <img src="../Images/goa/G7.avif" alt="Hotel 3"></a>
+                <h3>Jolly panda Goa</h3>
+                <p>Jolly Panda property is located in a prime location near Candolim beach. The staff is friendly and helpful, providing excellent service.
+                </p>
+            </div>
+        </div>
+
+        <div class="section-title">Places to Visit in Goa</div>
+        <div class="places">
+            <div class="place-block">
+                <img src="../Images/goa/G8.jpg" alt="Place 1">
+                <h3>Butterfly island</h3>
+                <p>Discover the best of Goa on a 6-day tour. Visit the beaches of North and South Goa, explore the Butterfly Island, 
+                    and enjoy a boat ride to the island and adventurous water activities.</p>
+            </div>
+            <div class="place-block">
+                <img src="../Images/goa/G9.jpg" alt="Place 2">
+                <h3>Baga beach</h3>
+                <p>Embark on a guided trip to Goa and visit all the city highlights.
+                     Admire the jaw-dropping beaches and see The Basilica of Bom Jesus, Aguada Fort, Old Goa,
+                                 and many more famous sites in one day.</p>
+            </div>
+           <div class="place-block">
+                <img src="../Images/goa/GS.jpg" alt="Place 3">
+                <h3>statue of abbe faria</h3>
+                <p>The historic statue made of bronze was installed in the state capital in 1945 and depicts Abbe 
+                    Faria hypnotising a woman. The statue is located at a small square just near the Secretariat Building in Panjim.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2024 Travel Guide to Goa
+    </footer>
+     <script>
+         var user = JSON.parse(localStorage.getItem("loggedUser"))
+        var loginadd = document.getElementById("login-btn");
+        console.log(user); 
+        loginadd.innerHTML = user;
+    </script>
+</body>
+</html>

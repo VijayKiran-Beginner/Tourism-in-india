@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .payment-options {
+            width: 48%;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .fare-summary {
+            width: 48%;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        .payment-options h2, .fare-summary h2 {
+            margin-bottom: 20px;
+        }
+        .payment-methods ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .payment-methods ul li {
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .payment-methods ul li img {
+            width: 80px; /* Increased icon size */
+            vertical-align: middle;
+            margin-right: 15px;
+        }
+        .payment-methods ul li.active {
+            background-color: #e0f7fa;
+            border-radius: 4px;
+            padding: 5px;
+            border: 2px solid #007bff; /* Added border to indicate activation */
+        }
+        .upi-input {
+            display: none; /* Initially hidden */
+            padding: 20px;
+            border: 2px solid #007bff; /* Box around the UPI form */
+            border-radius: 8px;
+            background-color: #f0f8ff; /* Light background */
+            margin-top: 10px;
+        }
+        .upi-input input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .verify-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .upi-icons {
+            margin-top: 10px;
+        }
+        .upi-icons img {
+            width: 40px; /* Larger UPI icons */
+            margin-right: 15px;
+        }
+        .fare-summary span {
+            font-weight: bold;
+        }
+        .fare-summary p {
+            margin: 10px 0;
+        }
+        .fare-summary img {
+            width: 100%; /* Full width for image */
+            height: auto;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+        /* Total Cost Section */
+        .total-cost {
+            width: 100%;
+            background-color: white; /* Changed background to white */
+            color: black;
+            font-size: 30px; /* Large font size for amount */
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 60px; /* Just above the full-width button */
+            left: 0;
+            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+        }
+        /* Full-width Proceed Button */
+        .proceed-button {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            font-size: 24px;
+            padding: 20px 0;
+            border: none;
+            cursor: pointer;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .animation-container {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        /* Progress Bar */
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-top: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #007bff;
+            border-radius: 5px;
+        }
+        /* Checkmark Confirmation */
+        .confirmation-message {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            font-size: 24px;
+            color: #28a745;
+            font-weight: bold;
+            transition: opacity 1s ease;
+        }
+        .checkmark {
+            display: none;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #28a745;
+            position: relative;
+            margin: 20px auto;
+            transform: scale(0);
+            opacity: 0;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+        .checkmark:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 60px;
+            border-right: 8px solid white;
+            border-bottom: 8px solid white;
+            transform: translate(-50%, -50%) rotate(45deg);
+            display: none;
+        }
+        /* Activate classes for animations */
+        .progress-bar.active {
+            width: 100%;
+            transition: width 3s ease-in-out;
+        }
+        .checkmark.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .checkmark.active:before {
+            display: block;
+            animation: draw-check 0.6s ease-in-out forwards;
+        }
+        @keyframes draw-check {
+            0% { border-width: 8px; width: 0; height: 0; }
+            100% { width: 40px; height: 60px; }
+        }
+        .confirmation-message.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Left Section: Payment Options -->
+        <div class="payment-options">
+            <h2>Payment Options</h2>
+            <div class="payment-methods">
+                <ul>
+                    <li id="upi-option" onclick="activateUPI()">
+                        <img src="upi.png" alt="UPI">All UPI Options<br>
+                         (pay directly from your bank Account)
+                    </li>
+                    <li><img src="credit.png" alt="Card">Credit/Debit/ATM Card</li>
+                    <li><img src="book-now-icon.png" alt="Book Now Pay Later">Book Now Pay Later</li>
+                    <li><img src="net-banking-icon.png" alt="Net Banking">Net Banking</li>
+                    <li><img src="gift-card-icon.png" alt="Gift Cards">Gift Cards, Wallets & More</li>
+                    <li><img src="google-pay-icon.png" alt="Google Pay">Google Pay</li>
+                </ul>
+
+                <!-- UPI Input Form -->
+                <div id="upi-form" class="upi-input">
+                    <label for="upi-id">Enter UPI ID</label>
+                    <input type="text" id="upi-id" placeholder="mobilenumber@upi">
+                    <button class="verify-button">VERIFY & PAY</button>
+                    <!-- UPI Payment Icons -->
+                    <div class="upi-icons">
+                        <img src="gpay.png" alt="GPay">
+                        <img src="phonepe.png" alt="PhonePe">
+                        <img src="paytm.png" alt="PayTM">
+                        <!-- Add other UPI logos as needed -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section: Fare Summary -->
+        <div class="fare-summary">
+            <h2>Fare Summary</h2>
+
+            <!-- Image from Previous Page -->
+            <img src="previous-page-image.jpg" alt="Hotel Image">
+
+            <p><span>Hotel Name:</span> Sheep Well Dormitory</p>
+            <p><span>Check-in:</span> Fri, 17 Mar 23, 2:00 PM</p>
+            <p><span>Check-out:</span> Sat, 18 Mar 23, 12:00 PM</p>
+            <p><span>Room:</span> AC Dormitory Upper Beds for Male Only</p>
+            <p><span>Traveler:</span> 1</p>
+            <p><span>Email:</span> <span id="user-email">useremail@domain.com</span></p>
+            <p><span>Phone:</span> <span id="user-phone">+91-XXXXXXXXXX</span></p>
+            <hr>
+            <p><span>Hotel Fare:</span> ₹227</p>
+            <p><span>Other Charges:</span> ₹43</p>
+            <hr>
+            <p><span>Total:</span> ₹<span id="total-fare">270</span></p>
+        </div>
+    </div>
+
+    <!-- Total Cost Section -->
+    <div class="total-cost">
+        Total Cost: ₹<span id="final-total">270</span>
+    </div>
+
+    <!-- Full-width Proceed Button -->
+    <button class="proceed-button" id="proceed-button" onclick="startBooking()">PROCEED</button>
+ <!-- Booking Animation Container -->
+ <div class="animation-container" id="animation-container">
+    <h1 id="booking-status">Processing your booking...</h1>
+    
+    <!-- Progress Bar -->
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- Confirmation Message and Checkmark -->
+    <div class="confirmation-message" id="confirmation-message">Booking Confirmed!</div>
+    <div class="checkmark" id="checkmark"></div>
+</div>
+
+    <script>
+        function activateUPI() {
+            // Make UPI Option active and show form
+            document.getElementById('upi-option').classList.add('active');
+            document.getElementById('upi-form').style.display = 'block';
+        }
+        function startBooking() {
+            // Hide the proceed button and show the animation container
+            document.getElementById('proceed-button').style.display = 'none';
+            const animationContainer = document.getElementById('animation-container');
+            animationContainer.style.display = 'block';
+
+            // Start the progress bar animation
+            const progressBar = document.getElementById('progress-bar');
+            progressBar.classList.add('active');
+
+            // Simulate booking process (e.g., API call) with 3 seconds delay for progress bar completion
+            setTimeout(() => {
+                // Progress bar animation complete, now show the confirmation
+                const checkmark = document.getElementById('checkmark');
+                const message = document.getElementById('confirmation-message');
+
+                // Update booking status
+                document.getElementById('booking-status').innerText = "Finalizing booking...";
+
+                // Remove progress bar and show confirmation after 1 second
+                setTimeout(() => {
+                    progressBar.style.display = 'none';
+                    message.style.display = 'block';
+                    checkmark.style.display = 'block';
+
+                    // Animate checkmark and confirmation message
+                    checkmark.classList.add('active');
+                    message.classList.add('active');
+                }, 1000);
+            }, 3000); // Adjust for simulation time (3 seconds for progress)
+        }
+    </script>
+</body>
+</html>

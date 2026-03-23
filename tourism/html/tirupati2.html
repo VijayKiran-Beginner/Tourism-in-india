@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tirupati-Travel Guide</title>
+    <style>
+       body
+       {
+                  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('d1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        /* navbar stylings */
+
+        .navbar
+        {
+            
+            display: flex;
+            padding: 20px 20px;
+            align-items: center;
+            width: 97%; 
+            background-color: #274f5c83;       
+        }
+        .navbar a
+        {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white ;
+            border-radius: 20px;
+        }
+
+        .navbar a:hover
+        {
+            color: orangered;
+            background-color: rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease 0s;
+        }
+
+        .navbar a:active
+        {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .menubar
+        {
+            width: 100%;
+            
+            
+        }
+        .login-btn
+        {
+            float: right;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #f9a825;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .gallery img {
+            margin: 10px;
+            border-radius: 10px;
+            width: 30%;
+            height: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #f9a825;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hotels, .places {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .hotel-block, .place-block {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px;
+            width: 30%;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hotel-block:hover, .place-block:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .hotel-block img, .place-block img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 4px solid #f9a825;
+        }
+
+        .hotel-block h3, .place-block h3 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .hotel-block p, .place-block p {
+            padding: 0 10px 20px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #f9a825;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="menubar">
+           <a href="home.html">HOME</a>
+           <a href="new1.html">ACCOMODATIONS</a>
+           <a href="aboutus.html">ABOUT</a>
+           <a href="help.html">HELP</a>
+           <div class="login-btn" id="login-btn"><a href="loginpage - Copy.html">LOGIN</a>  </div>
+           
+        </div>
+   </nav>
+    <h1>Welcome to Tirupati</h1>
+
+    <div class="content">
+        <div class="gallery">
+            <img src="../Images/tirupathi/tr1.jpg" alt="Tirupati Image 1">
+            <img src="../Images/tirupathi/tr5.jpeg" alt="Tirupati Image 2">
+            <img src="../Images/tirupathi/tr3.jpg" alt="Tirupati Image 3">
+        </div>
+
+        <p>Tirupati is a city in the Indian state of Andhra Pradesh. Its Sri Venkateswara Temple sits atop one of the the 7 peaks of Tirumala Hills, attracting scores of Hindu pilgrims. Sri Venkateswara National Park, home to the temple, also contains the Sri Venkateswara Zoological Park with lions and primates. Nearby, next to a waterfall and cave believed to be sacred, Sri Kapileswara Swamy Temple is dedicated to Lord Shiva..</p>
+        <marquee bgcolor="green">Click on hotel images for Booking of hotel.</marquee>
+        <div class="section-title">Hotels in Tirupati</div>
+        <div class="hotels">
+            <div class="hotel-block">
+                <a href="t2hotel1.html"><img src="../Images/tirupathi/th1.jpg" alt="Hotel 1"></a>
+                <h3>Hotel Ekante Bliss</h3>
+                <p>Located in the heart of this iconic temple city, Ekante Bliss, Tirupati – IHCL SeleQtions, is a haven of elegance and comfort. The property offers a breathtaking perspective of the renowned temple and convenient access to landmarks and attractions around the holy city, granting it the unique advantage of tranquillity and proximity..</p>
+            </div>
+            <div class="hotel-block">
+              <a href="t2hotel2.html" > <img src="../Images/tirupathi/th2.jpg" alt="Hotel 2"></a>
+                <h3>Fortune select Grand Ridge</h3>
+                <p>Welcome to Fortune Select Grand Ridge, the only five star hotel in Tirupati. We are conveniently located at the intersection of Airport By-pass road and Tiruchanoor road, in a quiet 17 acre park-like setting, called Shilparamam. We are 1.5 km from city center, railway and bus stations. Grand Ridge is the only hotel that offers all five star luxuries at three star prices.</p>
+            </div>
+            <div class="hotel-block">
+               <a href="t2hotel3.html"> <img src="../Images/tirupathi/th3.jpg" alt="Hotel 3"></a>
+                <h3>Pai Viceroy Hotel</h3>
+                <p>See why so many travellers make Pai Viceroy Hotel their hotel of choice when visiting Tirupati. Providing an ideal mix of value, comfort and convenience, it offers a romantic setting with an array of amenities designed for travellers like you.
+
+                    For those interested in checking out popular landmarks while visiting Tirupati, Pai Viceroy Hotel is located a short distance from Vaikuntha Teertham (0.2 mi) and Sri Varadaraja Swamy Temple (0.7 mi).</p>
+            </div>
+        </div>
+
+        <div class="section-title">Places to Visit in Tirupati</div>
+        <div class="places">
+            <div class="place-block">
+                <img src="../Images/tirupathi/tl1.jpg" alt="Place 1">
+                <h3>Tirumala Temple</h3>
+                <p>One of the holiest Hindu temples in the world, it is dedicated to Lord Venkateswara and visited by millions of devotees each year Tirumala is a census town in Chittoor district of the Indian state of Andhra Pradesh. The town is a part of Tirupati Urban Development Authority and located in Tirupati mandal of Tirupati revenue …
+                    .</p>
+            </div>
+            <div class="place-block">
+                <img src="../Images/tirupathi/tl2.jpg" alt="Place 2">
+                <h3>Bluland Water Park</h3>
+                <p>"Thrilling slides, refreshing pools, and a splash-tastic time! This water park delivers non-stop fun for all ages. Impeccable cleanliness and friendly staff enhance the overall experience. A perfect escape for a day of aquatic joy!".</p>
+            </div>
+            <div class="place-block">
+                <img src="../Images/tirupathi/tl3.jpg" alt="Place 3">
+                <h3>Sri Venkateswara Museum</h3>
+                <p>This museum is situated very near the Govindaraja perumal temple.When you come out of the temple through the south gate, you will see this museum.Rate collections of statue, very rare news about temples and the construction.Drawings of temple vimanas, paintings of different Lord forms are exhibited here.A person with good hunger to know about temples must surely visit this museum.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2024 All rights reserved (INDIAN TOURISM).
+    </footer>
+     <script>
+         var user = JSON.parse(localStorage.getItem("loggedUser"))
+        var loginadd = document.getElementById("login-btn");
+        console.log(user); 
+        loginadd.innerHTML = user;
+    </script>
+</body>
+</html>

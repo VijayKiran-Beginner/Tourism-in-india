@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gujarat-Travel Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('g22.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+         /* navbar stylings */
+
+         .navbar
+        {
+            
+            display: flex;
+            padding: 20px 20px;
+            align-items: center;
+            width: 97%; 
+            background-color: #274f5c83;       
+        }
+        .navbar a
+        {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white ;
+            border-radius: 20px;
+        }
+
+        .navbar a:hover
+        {
+            color: orangered;
+            background-color: rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease 0s;
+        }
+
+        .navbar a:active
+        {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .menubar
+        {
+            width: 100%;
+            
+            
+        }
+        .login-btn
+        {
+            float: right;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #f9a825;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .gallery img {
+            margin: 10px;
+            border-radius: 10px;
+            width: 30%;
+            height: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #f9a825;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hotels, .places {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .hotel-block, .place-block {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px;
+            width: 30%;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hotel-block:hover, .place-block:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .hotel-block img, .place-block img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 4px solid #f9a825;
+        }
+
+        .hotel-block h3, .place-block h3 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .hotel-block p, .place-block p {
+            padding: 0 10px 20px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #f9a825;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="menubar">
+           <a href="home.html">HOME</a>
+           <a href="new1.html">ACCOMODATIONS</a>
+           <a href="aboutus.html">ABOUT</a>
+           <a href="help.html">HELP</a>
+           <div class="login-btn" id="login-btn"><a href="loginpage - Copy.html">LOGIN</a>  </div>
+           
+        </div>
+   </nav>
+    <h1>Welcome to gujarat</h1>
+
+    <div class="content">
+        <div class="gallery">
+            <img src="../Images/gujarat/g.jpg" alt="gujarat Image 1">
+            <img src="../Images/gujarat/g11.jpg" alt="gujarat Image 2">
+            <img src="../Images/gujarat/g3 (2).jpg" alt="gujarat Image 3">
+        </div>
+
+        <p>Gujarat is a state along the western coast of India. Its coastline of about 1,600 km (990 mi) is the longest in the country, most of which lies on the Kathiawar peninsula. Gujarat is the fifth-largest Indian state by area, covering some 196,024 km2 (75,685 sq mi); and the ninth-most populous state, with a population of 60.4 million in 2011. It is bordered by Rajasthan to the northeast, Dadra and Nagar Haveli and Daman and Diu to the south, Maharashtra to the southeast, Madhya Pradesh to the east, and the Arabian Sea and the Pakistani province of Sindh to the west. Gujarat's capital city is Gandhinagar, while its largest city is Ahmedabad.The Gujaratis are indigenous to the state and their language, Gujarati, is the state's official language.</p>
+
+        <marquee bgcolor="green">Click on hotel images for Booking of hotel.</marquee>
+        <div class="section-title">Hotels in Gujarat</div>
+        <div class="hotels">
+            <div class="hotel-block">
+               <a href="ghotel1.html"> <img src="../Images/gujarat/gh1.jpg" alt="Hotel 1"></a>
+                <h3>Four Points By Sheraton, Ahmedabad</h3>
+                <p>Get what you’re looking for with the style and service you want, all at a great price. We have what matters most to you, like a comfortable bed, a delicious breakfast and fresh coffee. You will also find high speed internet access, and delicious, simple food. Four Points by Sheraton Ahmedabad has a great location in the heart of the city. We are just 10km from Ahmedabad airport, 3km from the railway station and 1.5km from Paldi bus station. Shopping is just minutes away from our door. Our well-equipped meeting rooms and pre-function area totals 288 square meters. Let our team of dedicated professionals work with you to host your special event. Whether you are in town for business or leisure, convenience, comfort and value are everywhere at Four Points by Sheraton Ahmedabad.</p>
+            </div>
+            <div class="hotel-block">
+                <a href="ghotel2.html"><img src="../Images/gujarat/gh2.jpg" alt="Hotel 2"></a>
+                <h3>Visamo Nalsarovar Resort Ahmedabad</h3>
+                <p>Nestled amidst the lush greenery near Ahmedabad and within easy reach from Vadodara, Visamo Nalsarovar Resort is defining the essence of a tranquil yet luxurious getaway, boasting unique A Frame Houses and an exquisite swimming pool that promise to elevate the standards of resorts in Gujarat. Catering to couples with its enchanting candlelight dinners and romantically adorned rooms, Visamo ensures a memorable and intimate ambiance. As a celebrated resort near Nalsarovar, it exemplifies eco-friendly luxury, offering serene escapes in its renowned tree houses and wooden cottages, thus establishing itself as a premier destination for those seeking the best resort near Ahmedabad or the best luxury resort in Gujarat. Its commitment to blending opulence with nature makes it an exemplary choice for discerning travelers seeking relaxation and memorable moments.</p>
+            </div>
+            <div class="hotel-block">
+                <a href="ghotel3.html"><img src="../Images/gujarat/gh3.jpg" alt="Hotel 3"></a>
+                <h3>Wyndham Ahmedabad Shela</h3>
+                <p>Wyndham Ahmedabad is truly a luxury property. The hotel is located just a few minutes drive from the various business hubs and around 30 minutes drive from the Ahmedabad Airport & Railway Station (27 Kms from the Airport and 22 Kms from the Railway Station). It has been built for comfortable & luxurious experience especially during large scale conferences and social engagements. With larger than life surroundings, convention facilities and state-of-the-art features, you will surely experience world class services with the touch of Indian hospitality. It is a much-preferred venue for business conferences, weddings, parties and social get-together. Wyndham Ahmedabad is located in close proximity to the prominent areas of the city. Airport - 30 minutes Prahladnagar - 15 minutes Sanand - 20 minutes Changodar - 20 minutes.</p>
+            </div>
+        </div>
+
+        <div class="section-title">Places to Visit in Gujarat</div>
+        <div class="places">
+            <div class="place-block">
+                <img src="../Images/gujarat/gl1.jpg" alt="Place 1">
+                <h3>Alpha One Mall</h3>
+                <p>The Ahmedabad One Mall, now known as Alpha One, is probably one of the best locations to visit in the city.
+
+                    It is full of international chain stores for clothing, food and more. There's also a foreign exchange at one of the entrances for tourists to change money.
+                    
+                    You must visit the Winter Wonderland, it's a change from the heat outside. Sign up to the free WiFi within, however, its not too predictable and speeds are slow.
+                    </p>
+            </div>
+            <div class="place-block">
+                <img src="../Images/gujarat/g1 (2).jpg" alt="Place 2">
+                <h3>STATUE OF UNITY</h3>
+                <p>Enjoy a scenic day at the impressive Statue of Unity, the Sardar Sarovar Dam, and the colorful Valley of Flowers on an easy trip from Ahmedabad. There’s no need to drive yourself or catch uncomfortable, slow public transport. You’ll be picked up from your hotel so you don’t need to find a meeting place. Learn more about Indian history and the figures who have shaped it from your guide.</p>
+            </div>
+            <div class="place-block">
+                <img src="../Images/gujarat/gl2.jpg" alt="Place 3">
+                <h3>Akshardam Temple</h3>
+                <p>Ahmedabad is the sixth largest city in India, and it's first UNESCO World Heritage City.  Your private tour with a local English speaking guide will take you to some of the best attractions and memorials in this ancient city.  Your tour includes the Jama Maszid, the Sidi Saiyed Mosque, the Adalaj Stepwell and the Akshardham Temple.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2024 All rights reserved (INDIAN TOURISM).
+    </footer>
+    <script>
+         var user = JSON.parse(localStorage.getItem("loggedUser"))
+        var loginadd = document.getElementById("login-btn");
+        console.log(user); 
+        loginadd.innerHTML = user;
+    </script>
+</body>
+</html>

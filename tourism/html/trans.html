@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Transportation Cost Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        .required::after {
+            content: '*';
+            color: red;
+            margin-left: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .calculate-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #f57c00;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calculate-btn:hover {
+            background-color: #d56800;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #f57c00;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1> Transportation Cost Calculator</h1>
+
+    <div class="container">
+        <form id="transportForm">
+            <!-- Departure Location -->
+            <label for="fromLocation" class="required">From Location</label>
+            <select id="fromLocation" required>
+                <option value="">Select Location</option>
+                <option value="NewDelhi">NewDelhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Pune">Pune</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Lucknow">Lucknow</option>
+                <option value="Kanpur">Kanpur</option>
+                <option value="Surat">Surat</option>
+                <option value="Patna">Patna</option>
+                <option value="Bhopal">Bhopal</option>
+                <option value="Agra">Agra</option>
+            </select>
+
+            <!-- Destination Location -->
+            <label for="toLocation" class="required">To Location</label>
+            <select id="toLocation" required>
+                 <option value="">Select the destination:</option>
+                <option value="Goa">Goa</option>
+                <option value="Darjeeling">Darjeeling</option>
+                <option value="Dwaraka">Dwaraka</option>
+                <option value="Manali">Manali</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Agra">Agra</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="NewDelhi">New delhi</option>
+                <option value="Tirupathi">Tirupati</option>
+                <option value="Chennai">Chennai</option>
+            </select>
+
+            <!-- Number of Passengers -->
+            <label for="passengers" class="required">Number of Passengers</label>
+            <input type="number" id="passengers" min="1" value="1" required>
+
+            <!-- Button to calculate -->
+            <button class="calculate-btn" type="submit">Calculate Cost</button>
+
+            <!-- Display the result -->
+            <div class="result" id="result">Result:</div>
+        </form>
+        
+    </div>
+
+    <script>
+        // Initial declaration of per-person cost (can be changed)
+            const costPerPerson = {
+    "NewDelhi-Goa": 3000,
+    "NewDelhi-Darjeeling": 2500,
+    "NewDelhi-Dwaraka": 2800,
+    "NewDelhi-Manali": 2200,
+    "NewDelhi-Gujarat": 2000,
+    "NewDelhi-Agra": 1500,
+    "NewDelhi-Bangalore": 3500,
+    "NewDelhi-Tirupati": 1800,
+    "NewDelhi-Chennai": 2400,
+    "Mumbai-Goa": 2500,
+    "Mumbai-Darjeeling": 3000,
+    "Mumbai-Dwaraka": 3200,
+    "Mumbai-Manali": 2800,
+    "Mumbai-Gujarat": 2000,
+    "Mumbai-Agra": 2500,
+    "Mumbai-Bangalore": 2600,
+    "Mumbai-Tirupati": 2200,
+    "Mumbai-Chennai": 2700,
+    "Kolkata-Goa": 3200,
+    "Kolkata-Darjeeling": 2000,
+    "Kolkata-Dwaraka": 3000,
+    "Kolkata-Manali": 3500,
+    "Kolkata-Gujarat": 2700,
+    "Kolkata-Agra": 1500,
+    "Kolkata-Bangalore": 3200,
+    "Kolkata-Tirupati": 2400,
+    "Kolkata-Chennai": 2900,
+    "Bangalore-Goa": 2500,
+    "Bangalore-Darjeeling": 3000,
+    "Bangalore-Dwaraka": 2800,
+    "Bangalore-Manali": 2700,
+    "Bangalore-Gujarat": 2100,
+    "Bangalore-Agra": 2000,
+    "Bangalore-Tirupati": 1800,
+    "Bangalore-Chennai": 1500,
+    "Chennai-Goa": 2600,
+    "Chennai-Darjeeling": 3100,
+    "Chennai-Dwaraka": 3000,
+    "Chennai-Manali": 2900,
+    "Chennai-Gujarat": 2300,
+    "Chennai-Agra": 2000,
+    "Chennai-Bangalore": 1700,
+    "Chennai-Tirupati": 1200,
+    "Hyderabad-Goa": 2700,
+    "Hyderabad-Darjeeling": 3100,
+    "Hyderabad-Dwaraka": 2900,
+    "Hyderabad-Manali": 2800,
+    "Hyderabad-Gujarat": 2400,
+    "Hyderabad-Agra": 2100,
+    "Hyderabad-Bangalore": 1900,
+    "Hyderabad-Tirupati": 1600,
+    "Hyderabad-Chennai": 1500,
+    "Ahmedabad-Goa": 2800,
+    "Ahmedabad-Darjeeling": 3200,
+    "Ahmedabad-Dwaraka": 2500,
+    "Ahmedabad-Manali": 2900,
+    "Ahmedabad-Gujarat": 2000,
+    "Ahmedabad-Agra": 2400,
+    "Ahmedabad-Bangalore": 2300,
+    "Ahmedabad-Tirupati": 2100,
+    "Ahmedabad-Chennai": 2200,
+    "Pune-Goa": 2700,
+    "Pune-Darjeeling": 3100,
+    "Pune-Dwaraka": 2900,
+    "Pune-Manali": 2700,
+    "Pune-Gujarat": 2000,
+    "Pune-Agra": 2100,
+    "Pune-Bangalore": 2200,
+    "Pune-Tirupati": 2000,
+    "Pune-Chennai": 2300,
+    "Jaipur-Goa": 2900,
+    "Jaipur-Darjeeling": 2500,
+    "Jaipur-Dwaraka": 2800,
+    "Jaipur-Manali": 2400,
+    "Jaipur-Gujarat": 2100,
+    "Jaipur-Agra": 1600,
+    "Jaipur-Bangalore": 2900,
+    "Jaipur-Tirupati": 2700,
+    "Jaipur-Chennai": 2500,
+    "Lucknow-Goa": 3000,
+    "Lucknow-Darjeeling": 2600,
+    "Lucknow-Dwaraka": 2900,
+    "Lucknow-Manali": 2300,
+    "Lucknow-Gujarat": 2200,
+    "Lucknow-Agra": 1200,
+    "Lucknow-Bangalore": 3100,
+    "Lucknow-Tirupati": 2700,
+    "Lucknow-Chennai": 2600,
+    "Kanpur-Goa": 3100,
+    "Kanpur-Darjeeling": 2900,
+    "Kanpur-Dwaraka": 3200,
+    "Kanpur-Manali": 2500,
+    "Kanpur-Gujarat": 2200,
+    "Kanpur-Agra": 1400,
+    "Kanpur-Bangalore": 3000,
+    "Kanpur-Tirupati": 2600,
+    "Kanpur-Chennai": 2700,
+    "Surat-Goa": 2900,
+    "Surat-Darjeeling": 3100,
+    "Surat-Dwaraka": 2800,
+    "Surat-Manali": 2700,
+    "Surat-Gujarat": 2100,
+    "Surat-Agra": 1500,
+    "Surat-Bangalore": 2300,
+    "Surat-Tirupati": 2000,
+    "Surat-Chennai": 2400,
+    "Patna-Goa": 3200,
+    "Patna-Darjeeling": 3000,
+    "Patna-Dwaraka": 2800,
+    "Patna-Manali": 2600,
+    "Patna-Gujarat": 2300,
+    "Patna-Agra": 1800,
+    "Patna-Bangalore": 2500,
+    "Patna-Tirupati": 2200,
+    "Patna-Chennai": 2100,
+    "Bhopal-Goa": 3000,
+    "Bhopal-Darjeeling": 2800,
+    "Bhopal-Dwaraka": 2700,
+    "Bhopal-Manali": 2500,
+    "Bhopal-Gujarat": 2200,
+    "Bhopal-Agra": 1700,
+    "Bhopal-Bangalore": 2800,
+    "Bhopal-Tirupati": 2500,
+    "Bhopal-Chennai": 2300,
+    "Agra-Goa": 2500,
+    "Agra-Darjeeling": 2300,
+    "Agra-Dwaraka": 2400,
+    "Agra-Manali": 2000,
+    "Agra-Gujarat": 1500,
+    "Agra-Bangalore": 1800,
+    "Agra-Tirupati": 1600,
+    "Agra-Chennai": 1400,
+    "Tirupati-Goa": 3500, 
+    "Tirupati-Darjeeling": 4200,
+    "Tirupati-Dwaraka": 3500,
+    "Tirupati-Manali": 4000,
+    "Tirupati-Gujarat": 3700,
+    "Tirupati-Agra": 3300,
+    "Tirupati-Bangalore": 3900,
+    "Tirupati-NewDelhi": 1800,
+    "Tirupati-Chennai": 3200,
+    "Goa-Darjeeling": 4000,
+    "Goa-Dwaraka": 3200,
+    "Goa-Manali": 3800,
+    "Goa-Gujarat": 3300,
+    "Goa-Agra": 2900,
+    "Goa-Bangalore": 3600,
+    "Goa-NewDelhi": 3500,
+    "Goa-Tirupati": 3500,
+    "Goa-Chennai": 3400
+};
+        // Event listener for form submission
+        document.getElementById('transportForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get values from the form
+            const fromLocation = document.getElementById('fromLocation').value;
+            const toLocation = document.getElementById('toLocation').value;
+            const passengers = parseInt(document.getElementById('passengers').value);
+
+            // Check if all fields are filled
+            if (!fromLocation || !toLocation || isNaN(passengers) || passengers < 1) {
+                alert("Please fill out all fields with valid values.");
+                return;
+            }
+
+            // Ensure the fromLocation and toLocation are not the same
+            if (fromLocation === toLocation) {
+                alert("Departure and destination locations cannot be the same.");
+                return;
+            }
+
+            // Create a key to lookup cost from the dictionary
+            const routeKey = fromLocation + '-' + toLocation; // String concatenation
+            const reverseRouteKey = toLocation + '-' + fromLocation;
+
+            // Calculate the cost
+            let totalCost = 0;
+            if (costPerPerson[routeKey] !== undefined) {
+                totalCost = costPerPerson[routeKey] * passengers;
+            } else if (costPerPerson[reverseRouteKey] !== undefined) {
+                totalCost = costPerPerson[reverseRouteKey] * passengers;
+            } else {
+                alert("No direct train route found between these locations.");
+                return;
+            }
+
+            // Display the result
+            document.getElementById('result').textContent = totalCost;
+        });
+
+    </script>
+
+</body>
+</html>

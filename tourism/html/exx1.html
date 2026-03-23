@@ -1,0 +1,265 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+    <title>Hotel Sunrise Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ffefba, #ffffff);
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hotel-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hotel-image:hover{
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
+        }
+
+
+        h2 {
+            margin-top: 20px;
+            font-size: 2rem;
+            color: #f57c00;
+        }
+
+        .hotel-specs {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            text-align:center;
+        }
+
+        .spec {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            flex: 1;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        .column
+        {
+            float:left;
+            width:50%;
+        }
+        .column-1{
+            margin-top:75px;
+        }
+        .row::after{
+            content:"";
+            display:table;
+            clear:both;
+        }
+        h3 {
+            color: #333;
+            font-size: 1.5rem;
+            text-align:center;
+        }
+
+        .reviews {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .stars {
+            font-size: 1.5rem;
+        }
+
+        .stars{
+            color:gold;
+        }
+
+        .booking {
+            margin-top: 40px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .booking label {
+            display: block;
+            margin-top: 15px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        input[type="date"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+
+        .cost {
+            margin-top: 20px;
+            font-size: 1.8rem;
+            color: #f57c00;
+            text-align: center;
+        }
+        .cost small {
+            font-size: 0.8rem;
+            color: #666;
+            margin-left: 5px;
+        }
+        input[type="date"], input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+        input[type="text"] {
+            text-align: center;
+            border: none;
+            background-color: #f1f1f1;
+            color: #f57c00;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .book-button {
+            display: block;
+            margin: 20px auto;
+            padding: 15px 40px;
+            background-color: #f57c00;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .book-button:active{
+            background-color:#e65100;
+            transform:scale(0.85);
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div ng-init="initadult=1200">
+    <div class="container">
+        <!-- Hotel Large Image -->
+        <img src="../thh1.jpg" alt="Hotel Sunrise" class="hotel-image">
+
+        <!-- Hotel Specifications -->
+        <h2>Ekante Bliss,Tirupati-IHCL</h2>
+        <div class="hotel-specs">
+            <div class="spec">
+                <h3>Location</h3>
+                <p>Renigunta Road 19-3-45 Near Ramanuja Circle, Tirupati 517501 India</p>
+            </div>
+            <div class="spec" class="row">
+               <div class="column"><h3>Services</h3>
+                <h4><u>property aminities</u></h4>
+                <p id="line" >Free parking<br>
+                    Free High Speed Internet (WiFi)<br>
+                    Fitness Centre with Gym / Workout Room<br>
+                    Pool<br>
+                    Free breakfast<br>
+                    Entertainment staff<br>
+                    Board games / puzzles<br>
+                    Books, DVDs, music for children<br>
+                    Electric vehicle charging station<br>
+                    Valet parking</p></div>
+                    <div class="column-1">
+                     <h4><u>Room features</u></h4>
+                   <p id="line">Allergy-free room<br>
+                        Blackout curtains<br>
+                        Desk<br>
+                        Housekeeping<br>
+                        Interconnected rooms available<br>
+                        Coffee / tea maker<br>
+                        Cable / satellite TV<br>
+                        Bidet<br>
+                        Soundproof rooms<br>
+                        Bathrobes<br>
+                        Room service<br>
+                        Safe<br>
+                        Separate living room<br>
+                        Sofa</p>
+                    </div>
+            </div>
+        </div>
+
+        <!-- Reviews with Stars -->
+        <div class="reviews">
+            <h3>Reviews</h3>
+            <div class="stars">
+                <p>★★★★★</p>
+                <p style="color:black">5 star Rating</p>
+            </div>
+        </div>
+
+        <!-- Booking Section -->
+        <div class="booking">
+            <label for="city">City Location</label>
+            <input type="text" id="location" value="Tirupati" readonly>
+
+            <label for="checkin">Check-in</label>
+            <input type="date" id="checkin" ng-model="checkin">
+
+            <label for="checkout">Check-out</label>
+            <input type="date" id="checkout" ng-model="checkout">
+             
+            <label for="rooms">Rooms</label>
+            <input type="number" id="rooms" min="1" value="1" ng-model="room">
+
+            <label for="adults">Adults</label>
+            <input type="number" id="adults" min="1" value="1" ng-model="adult">
+
+            <label for="children">Children (0-17)</label>
+            <input type="number" id="children" min="0" value="0" ng-model="child">
+            <!-- Estimated Cost -->
+            <div class="cost">Estimated Cost:₹<span ng-bind="(room*initadult+(adult*300)+(child*150))"></span><small>per day</small></div>
+            <div class="cost">Estimated Cost:₹<span ng-bind="(room*initadult+(adult*300)+(child*150))*calculateDays(checkin,checkout)"></span><small>per schedule</small></div>
+
+            <!-- Book Button -->
+            <button class="book-button" type="submit">Book Now</button>
+        </div>
+    </div>
+</div>
+<script>
+    function calculateDays(checkin,checkout) {
+        if (!checkin || !checkout)  return 1;  
+        // Default 1 day if no dates are selected
+
+        const checkinDate = new Date(checkin);
+        const checkoutDate = new Date(checkout);
+        const timeDiff = checkoutDate - checkinDate;
+        const days = timeDiff / (1000 * 60 * 60 * 24);  // Convert milliseconds to days
+
+        return days > 0 ? days : 1;  // Ensure at least 1 day
+      
+}  
+</script>
+<script>
+var app=angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+     $scope.calculateDays =calculateDays;
+ });
+</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Transportation Cost Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        .required::after {
+            content: '*';
+            color: red;
+            margin-left: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .calculate-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #f57c00;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calculate-btn:hover {
+            background-color: #d56800;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            color: #f57c00;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Transportation Cost Calculator</h1>
+
+    <div class="container">
+        <form id="transportForm">
+            <!-- Departure Location -->
+            <label for="fromLocation" class="required">From Location</label>
+            <select id="fromLocation" required>
+                <option value="">Select Location</option>
+                <option value="NewDelhi">NewDelhi</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="Kolkata">Kolkata</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="Chennai">Chennai</option>
+                <option value="Hyderabad">Hyderabad</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Pune">Pune</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Lucknow">Lucknow</option>
+                <option value="Kanpur">Kanpur</option>
+                <option value="Surat">Surat</option>
+                <option value="Patna">Patna</option>
+                <option value="Bhopal">Bhopal</option>
+                <option value="Agra">Agra</option>
+            </select>
+
+            <!-- Destination Location -->
+            <label for="toLocation" class="required">To Location</label>
+            <select id="toLocation" required>
+                <option value="">Select Destination</option>
+                <option value="Goa">Goa</option>
+                <option value="Darjeeling">Darjeeling</option>
+                <option value="Dwaraka">Dwaraka</option>
+                <option value="Manali">Manali</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Agra">Agra</option>
+                <option value="Bangalore">Bangalore</option>
+                <option value="NewDelhi">New Delhi</option>
+                <option value="Tirupati">Tirupati</option>
+                <option value="Chennai">Chennai</option>
+            </select>
+
+            <!-- Number of Adults -->
+            <label for="adults" class="required">Number of Adults</label>
+            <input type="number" id="adults" min="1" value="1" required>
+
+            <!-- Number of Children -->
+            <label for="children" class="required">Number of Children</label>
+            <input type="number" id="children" min="0" value="0" required>
+
+            <!-- Button to calculate -->
+            <button class="calculate-btn" type="submit">Calculate Cost</button>
+
+            <!-- Display the result -->
+            <div class="result">Result: ₹<span id="result">0</span></div>
+        </form>
+        
+    </div>
+
+    <script>
+        const costPerPerson = {
+            "NewDelhi-Goa": 3000,
+            "NewDelhi-Darjeeling": 2500,
+            "Mumbai-Goa": 2500,
+            "Chennai-Manali": 2900,
+            // Add other routes here...
+        };
+
+        document.getElementById('transportForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const fromLocation = document.getElementById('fromLocation').value;
+            const toLocation = document.getElementById('toLocation').value;
+            const adults = parseInt(document.getElementById('adults').value);
+            const children = parseInt(document.getElementById('children').value);
+
+            if (!fromLocation || !toLocation || isNaN(adults) || isNaN(children)) {
+                alert("Please fill out all fields with valid values.");
+                return;
+            }
+
+            if (fromLocation === toLocation) {
+                alert("Departure and destination locations cannot be the same.");
+                return;
+            }
+
+            const routeKey = fromLocation + '-' + toLocation;
+            const reverseRouteKey = toLocation + '-' + fromLocation;
+            let totalCost = 0;
+
+            if (costPerPerson[routeKey]) {
+                const adultCost = costPerPerson[routeKey];
+                const childCost = adultCost * 0.5;
+                totalCost = (adultCost * adults) + (childCost * children);
+            } else if (costPerPerson[reverseRouteKey]) {
+                const adultCost = costPerPerson[reverseRouteKey];
+                const childCost = adultCost * 0.5;
+                totalCost = (adultCost * adults) + (childCost * children);
+            } else {
+                alert("No direct route found between these locations.");
+                return;
+            }
+
+            document.getElementById('result').textContent = totalCost;
+        });
+    </script>
+
+</body>
+</html>

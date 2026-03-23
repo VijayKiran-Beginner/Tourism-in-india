@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agra-Travel Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('taj.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+         /* navbar stylings */
+
+         .navbar
+        {
+            
+            display: flex;
+            padding: 20px 20px;
+            align-items: center;
+            width: 97%; 
+            background-color: #274f5c83;       
+        }
+        .navbar a
+        {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white ;
+            border-radius: 20px;
+        }
+
+        .navbar a:hover
+        {
+            color: orangered;
+            background-color: rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease 0s;
+        }
+
+        .navbar a:active
+        {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .menubar
+        {
+            width: 100%;
+            
+            
+        }
+        .login-btn
+        {
+            float: right;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #f9a825;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .gallery img {
+            margin: 10px;
+            border-radius: 10px;
+            width: 30%;
+            height: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #f9a825;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hotels, .places {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .hotel-block, .place-block {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px;
+            width: 30%;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hotel-block:hover, .place-block:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .hotel-block img, .place-block img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 4px solid #f9a825;
+        }
+
+        .hotel-block h3, .place-block h3 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .hotel-block p, .place-block p {
+            padding: 0 10px 20px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #f9a825;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="menubar">
+           <a href="home.html">HOME</a>
+           <a href="new1.html">ACCOMODATIONS</a>
+           <a href="aboutus.html">ABOUT</a>
+           <a href="help.html">HELP</a>
+           <div class="login-btn" id="login-btn"><a href="loginpage - Copy.html">LOGIN</a>  </div>
+           
+        </div>
+   </nav>
+    <h1>Welcome to Agra</h1>
+
+    <div class="content">
+        <div class="gallery">
+            <img src="../Images/agra/agra3.jpg" alt="Taj Mahal with symmetrical reflecting pool in foreground, flanked by four minarets and manicured cypress trees, showcasing iconic white marble Mughal architecture under a hazy sky with visitors exploring the grounds">
+            <img src="../Images/agra/agra2.jpg" alt="Agra Image 2">
+            <img src="../Images/agra/agra1.jpg" alt="Agra Image 3">
+        </div>
+
+        <p>Agra is best known for the Taj Mahal (17th century), designated a UNESCO World Heritage site in 1983. A complex mausoleum, the Taj Mahal is often considered to be the world's best example of Mughal architecture. The Mughal emperor Shah Jahān built it for his favourite wife, Mumtāz Maḥal, in the mid-17th century..</p>
+<marquee bgcolor="green">Click on hotel images for Booking of hotel.</marquee>
+        <div class="section-title">Hotels in Agra</div>
+        <div class="hotels">
+            <div class="hotel-block">
+                <a href="ahotel1.html"><img src="../Images/agra/ah1.jpg" alt="Courtyard Agra hotel exterior featuring red stone Mughal-inspired architecture with manicured gardens and fountains, representing luxury accommodation near the Taj Mahal"></a>
+                <h3>Courtyard Agra</h3>
+                <p>Retreat to Courtyard Agra. Enjoy easy access to Agra's legendary attractions, including the Taj Mahal, Fatehpur Sikri and Agra Fort, all just minutes away. After a busy day of sightseeing, unwind in the hotel spa or enjoy a dip in the sparkling outdoor pool. Visit the family-friendly Fun Zone to keep your little ones engaged or head to our innovative restaurants and bars to savor distinctive cuisines and crafted cocktails. With Marriott Bonvoy on Wheels, bring home the signature Marriott Dining experience in the comfort of your home and relish our exquisite flavors from our famous restaurants in the city.</p>
+            </div>
+            <div class="hotel-block">
+                <a href="ahotel2.html"><img src="../Images/agra/ah2.jpg" alt="Hotel Trident Agra exterior showcasing red sandstone Mughal-style architecture with elegant gardens, fountains, and manicured landscaping surrounding the main building, representing a luxury accommodation option near the Taj Mahal"></a>
+                <h3>Hotel Trident, Agra</h3>
+                <p>The Trident, Agra, set amidst beautiful gardens, fountains, and landscaped central courtyards, is built of red stone reminiscent of the Mughal era. The hotel is only 1.5 kilometers away from one of the new 7 Wonders of the World, the Taj Mahal. The hotel derives up to 25% of its electricity needs from solar energy. The hotel is also equipped with an in-house Water Bottling Plant and Electric Vehicle Charging Station(s) for your everyday needs.</p>
+            </div>
+            <div class="hotel-block">
+                <a href="ahotel3.html"><img src="../Images/agra/ah3.jpg" alt="DoubleTree by Hilton Hotel Agra exterior showcasing modern architecture with a blend of traditional elements, offering luxury accommodation near the Taj Mahal"></a>
+                <h3>DoubleTree by Hilton Hotel Agra</h3>
+                <p>WELCOME TO DOUBLETREE BY HILTON™, minutes away from the majestic Taj Mahal brings heart-warming experiences while you enjoy the rich culture of the city. An ideal hotel for family staycation, destination wedding or business trip, Enjoy the warm welcome with our DoubleTree Chocochip cookie before you witness the epitome of comfort and service unfold in front of your eyes. Thoughtfully decorated rooms with bespoke amenities offer unparalled views of the locality or the refreshing pool. Spend your day lazing around in the comfort of your room, strolling through the extensive lawns, taking a refreshing lap in the infinity pool, or rejuvenate at the Spa / Gymnasium after a long day of leisure. Allow our Chef’s to curate an exclusive menu for your special celebrations or simply enjoy the specialties of the region at Kebab E Que or North 27 and wind it up with a drink in the Plush Bar. With a round the clock In room Dining, there is always something available to satisfy your midnight cravings. Our Wedding experts are here to guide you and have your most important day unfold like a magic. Plan a lavish wedding or a business meeting and nothing is a hassle.Experience Signature Hilton Hospitality that blends warmth and professionalism to make your stay memorable while you take away fond memories of the Taj Mahal.</p>
+            </div>
+        </div>
+
+        <div class="section-title">Places to Visit in Agra</div>
+        <div class="places">
+            <div class="place-block">
+                <img src="../Images/agra/al1.jpg" alt="Place 1">
+                <h3>Taj Mahal</h3>
+                <p>The Taj Mahal is located on the right bank of the Yamuna River in a vast Mughal garden that encompasses nearly 17 hectares, in the Agra District in Uttar Pradesh. It was built by Mughal Emperor Shah Jahan in memory of his wife Mumtaz Mahal with construction starting in 1632 AD and completed in 1648 AD, with the mosque, the guest house and the main gateway on the south, the outer courtyard and its cloisters were added subsequently and completed in 1653 AD. The existence of several historical and Quaranic inscriptions in Arabic script have facilitated setting the chronology of Taj Mahal. For its construction, masons, stone-cutters, inlayers, carvers, painters, calligraphers, dome builders and other artisans were requisitioned from the whole of the empire and also from the Central Asia and Iran. Ustad-Ahmad Lahori was the main architect of the Taj Mahal.</p>
+            </div>
+            <div class="place-block">
+                <img src="../Images/agra/al2.jpg" alt="Place 2">
+                <h3>Agra Fort</h3>
+                <p>Agra Fort, large 16th-century fortress of red sandstone located on the Yamuna River in the historic city of Agra, west-central Uttar Pradesh, north-central India. It was established by the Mughal emperor Akbar and, in its capacity as both a military base and a royal residence, served as the seat of government when the Mughal capital was in Agra. The structure, a contemporary of Humāyūn’s Tomb in Delhi (about 125 miles [200 km] to the northwest), reflects the architectural grandeur of the Mughal reign in India. The fort complex was designated a UNESCO World Heritage site in 1983.Situated on the site of earlier fortifications, it lies on the right bank of the Yamuna River and is connected to another of Agra’s renowned monuments, the Taj Mahal (downstream, around a bend in the Yamuna), by a swath of parkland and gardens. The fort was commissioned by Akbar in 1565 and reportedly took eight years to construct. The walls of the roughly crescent-shaped structure have a circumference of about 1.5 miles (2.5 km), rise 70 feet (21 metres) high, and are surrounded by a moat.</p>
+            </div>
+            <div class="place-block">
+                <img src="../Images/agra/al3.jpg" alt="Place 3">
+                <h3>Dayal Bagh Temple</h3>
+                <p>Dayal Bagh is not just a religious site but a self-sustained colony where residents lead an active, disciplined, and cooperative community life.
+
+                    Affiliated with the Radha Swami sect, the community follows spiritual ideals or leaders and contributes to social service through its various institutions.
+                    
+                    #Trivia: The Radhaswami Satsang Sabha, the chief working committee of the Radhaswami faith, plays a crucial role in guiding the community.
+                    
+                    According to the 2001 India census, Dayal Bagh had a population of 3324, with a balanced gender distribution. The community values its traditions, and residents actively participate in daily activities, including agricultural work.
+                    
+                    The area adjacent to the Dayal Bagh colony is known as Swami Bagh, which secures the Radha Swami temple and serves as the sacred tomb of Puran Dhani Swami Ji Maharaj, the founder and first leader of the Radha Swami faith..</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var user = JSON.parse(localStorage.getItem("loggedUser"))
+        var loginadd = document.getElementById("login-btn");
+        console.log(user); 
+        loginadd.innerHTML = user;
+    </script>
+    <footer>
+        © 2024 All rights reserved (INDIAN TOURISM).
+    </footer>
+</body>
+</html>

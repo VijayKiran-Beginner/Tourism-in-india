@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review your Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #002d62;
+        }
+        .booking-section, .guest-section, .special-request, .trip-secure {
+            margin-bottom: 20px;
+        }
+        .booking-section {
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 20px;
+        }
+        .guest-section {
+            display: flex;
+            justify-content: space-between;
+        }
+        .section-title {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .room-details, .price-details {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"], input[type="email"], input[type="tel"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .summary-box {
+            padding: 10px;
+            background-color: #f0f8ff;
+            border: 1px solid #d1d1d1;
+            margin-bottom: 20px;
+        }
+        .summary-box span {
+            font-weight: bold;
+        }
+        .price-details p {
+            margin: 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .coupon {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border: 1px solid #ccc;
+        }
+        .coupon input {
+            width: auto;
+            padding: 5px;
+        }
+        .pay-now {
+            text-align: center;
+        }
+        .guest-details {
+            margin-bottom: 20px;
+        }
+        .guest-form {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Review your Booking</h2>
+    
+    <!-- Booking Details Section -->
+    <div class="booking-section">
+        <div class="section-title">Booking Details</div>
+        <div class="summary-box">
+            <p>Hotel-Name:<span id="hname"></span></p>
+            <p>Location:<span id="loc"></span></p>
+            <p>Check-in: <span id="checkin-date"></span></p>
+            <p>Check-out: <span id="checkout-date"></span></p>
+            <p>Duration: <span id="total-days"></span> nights</p>
+        </div>
+    </div>
+
+    <!-- Room Details Section -->
+    <div class="guest-section">
+        <div>
+            <div class="section-title">Room Details</div>
+            <div class="room-details">
+                <label>Room Type</label>
+                <input type="text" id="room-type" value="Normal" readonly>
+            </div>
+            <div class="guest-details">
+                <p>Adults: <span id="adults"></span></p>
+                <p>Children: <span id="children"></span></p>
+            </div>
+        </div>
+        <div>
+            <div class="section-title">Price Breakup</div>
+            <div class="price-details">
+                <p>Room Price: ₹<span id="cost"></span></p>
+                <p>Fees: ₹500</p>
+                <p>Total: ₹<span id="total-price"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic Guest Forms Section -->
+    <div id="guestForms"></div>
+
+    <!-- Confirm Details Button -->
+    <button id="confirm-details">Confirm Details</button>
+
+    <!-- Special Request Section -->
+    <div class="special-request">
+        <label>Special Request (Optional)</label>
+        <input type="text" placeholder="Add special requests...">
+    </div>
+
+    <marquee bgcolor="yellow" height="25">Hotel taxes were included in the Room Price and additional fees are applicable to you for utilizing our service.</marquee>
+
+    <!-- Pay Now Button -->
+    <div class="pay-now">
+        <button id="pay-now">Pay Now</button>
+    </div>
+</div>
+
+<script>
+    // Function to calculate the difference in days between two dates
+    function calculateDays(checkin, checkout) {
+        const checkinDate = new Date(checkin);
+        const checkoutDate = new Date(checkout);
+        const timeDiff = checkoutDate - checkinDate;
+        return timeDiff / (1000 * 3600 * 24); // Convert milliseconds to days
+    }
+
+    // Get parameters from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const loc = urlParams.get('location');
+    const checkin = urlParams.get('checkin');
+    const checkout = urlParams.get('checkout');
+    const adults = parseInt(urlParams.get('adult')) || 0;
+    const children = parseInt(urlParams.get('child')) || 0;
+    const cost = urlParams.get('cost');
+    const hname = urlParams.get('hname');
+   
+    // Update the page with the passed values
+    document.getElementById('loc').innerText = loc;
+    document.getElementById('hname').innerText = hname;
+    document.getElementById('checkin-date').innerText = checkin;
+    document.getElementById('checkout-date').innerText = checkout;
+    document.getElementById('adults').innerText = adults;
+    document.getElementById('children').innerText = children;
+
+    // Calculate and display the total number of days
+    const totalDays = calculateDays(checkin, checkout);
+    document.getElementById('total-days').innerText = totalDays;
+
+    // Display the room price and total price
+    document.getElementById('cost').innerText = cost;
+    const totalPrice = parseInt(cost) + 500; // Adding ₹500 for taxes
+    document.getElementById('total-price').innerText = totalPrice;
+
+    // Dynamically create and append guest forms based on adults and children count
+    const guestForms = document.getElementById('guestForms');
+
+    function createAdultGuestForm(index) {
+        const guestForm = document.createElement('div');
+        guestForm.classList.add('guest-form');
+        guestForm.innerHTML = `
+            <h3>Adult ${index + 1} Details</h3>
+            <label for="title-${index}">Title</label>
+            <select id="title-${index}">
+                <option value="Mr">Mr</option>
+                <option value="Ms">Ms</option>
+            </select>
+
+            <label for="adult-first-name-${index}">First Name</label>
+            <input type="text" id="adult-first-name-${index}" placeholder="First Name">
+
+            <label for="adult-last-name-${index}">Last Name</label>
+            <input type="text" id="adult-last-name-${index}" placeholder="Last Name">
+
+            <label for="email-${index}">Email</label>
+            <input type="email" id="email-${index}" placeholder="Email">
+
+            <label for="phone-${index}">Contact Number (10 digits)</label>
+            <input type="tel" id="phone-${index}" placeholder="Contact Number">
+        `;
+        guestForms.appendChild(guestForm);
+    }
+
+    function createChildGuestForm(index) {
+        const guestForm = document.createElement('div');
+        guestForm.classList.add('guest-form');
+        guestForm.innerHTML = `
+            <h3>Child ${index + 1} Details</h3>
+            <label for="child-first-name-${index}">First Name</label>
+            <input type="text" id="child-first-name-${index}" placeholder="First Name">
+
+            <label for="child-last-name-${index}">Last Name</label>
+            <input type="text" id="child-last-name-${index}" placeholder="Last Name">
+
+            <label for="child-age-${index}">Age (<18)</label>
+            <input type="number" id="child-age-${index}" placeholder="Age">
+        `;
+        guestForms.appendChild(guestForm);
+    }
+
+    // Create adult guest forms
+    for (let i = 0; i < adults; i++) {
+        createAdultGuestForm(i);
+    }
+
+    // Create child guest forms
+    for (let i = 0; i < children; i++) {
+        createChildGuestForm(i);
+    }
+
+    // Confirm Details button functionality
+    document.getElementById('confirm-details').onclick = function() {
+        alert("Guest details confirmed!");
+    };
+
+    // Pay Now button functionality
+    document.getElementById('pay-now').onclick = function() {
+        alert("Proceeding to payment...");
+    };
+    
+    document.getElementById('pay-now').onclick = function() {
+    // Collect necessary data
+    const hname = document.getElementById('hname').innerText;
+    const checkin = document.getElementById('checkin-date').innerText;
+    const checkout = document.getElementById('checkout-date').innerText;
+    const adults = document.getElementById('adults').innerText;
+    const children = document.getElementById('children').innerText;
+    const totalPrice = document.getElementById('total-price').innerText;
+
+    // Construct the URL with query parameters
+    const url = 'payment2.html?hname=' + encodeURIComponent(hname) +
+    '&checkin=' + encodeURIComponent(checkin) +
+    '&checkout=' +encodeURIComponent(checkout)+
+    '&adults=' + encodeURIComponent(adults) +
+    '&children=' +encodeURIComponent(children)+
+    '&totalPrice=' +encodeURIComponent(totalPrice);
+
+    // Redirect to the payment page
+    window.location.href = url;
+};
+</script>
+</body>
+</html>

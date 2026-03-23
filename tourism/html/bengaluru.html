@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bengaluru-Travel Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('ben.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+         /* navbar stylings */
+
+         .navbar
+        {
+            
+            display: flex;
+            padding: 20px 20px;
+            align-items: center;
+            width: 97%; 
+            background-color: #274f5c83;       
+        }
+        .navbar a
+        {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: white ;
+            border-radius: 20px;
+        }
+
+        .navbar a:hover
+        {
+            color: orangered;
+            background-color: rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease 0s;
+        }
+
+        .navbar a:active
+        {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .menubar
+        {
+            width: 100%;
+            
+            
+        }
+        .login-btn
+        {
+            float: right;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #f9a825;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .gallery img {
+            margin: 10px;
+            border-radius: 10px;
+            width: 30%;
+            height: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #f9a825;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hotels, .places {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .hotel-block, .place-block {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px;
+            width: 30%;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hotel-block:hover, .place-block:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .hotel-block img, .place-block img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 4px solid #f9a825;
+        }
+
+        .hotel-block h3, .place-block h3 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .hotel-block p, .place-block p {
+            padding: 0 10px 20px;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #f9a825;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="menubar">
+           <a href="home.html">HOME</a>
+           <a href="new1.html">ACCOMODATIONS</a>
+           <a href="aboutus.html">ABOUT</a>
+           <a href="help.html">HELP</a>
+           <div class="login-btn" id="login-btn"><a href="loginpage - Copy.html">LOGIN</a>  </div>
+           
+        </div>
+   </nav>
+
+    <h1>Welcome to bengaluru</h1>
+
+    <div class="content">
+        <div class="gallery">
+            <img src="../Images/benguluru/ben1.jpg" alt="Bengaluru Image 1">
+            <img src="../Images/benguluru/ben2.jpg" alt="Bengaluru Image 2">
+            <img src="../Images/benguluru/ben3.jpg" alt="Bengaluru Image 3">
+        </div>
+
+        <p>Bengaluru (also called Bangalore) is the capital of India's southern Karnataka state. The center of India's high-tech industry, the city is also known for its parks and nightlife. By Cubbon Park, Vidhana Soudha is a Neo-Dravidian legislative building. Former royal residences include 19th-century Bangalore Palace, modeled after England’s Windsor Castle, and Tipu Sultan’s Summer Palace, an 18th-century teak structure.</p>
+        <marquee bgcolor="green">Click on hotel images for Booking of hotel.</marquee>
+        <div class="section-title">Hotels in Bengaluru</div>
+        <div class="hotels">
+            <div class="hotel-block">
+                <a href="bhotel1.html"><img src="../Images/benguluru/bh1.jpg" alt="Hotel 1"></a>
+                <h3>Leela Palace Bengaluru</h3>
+                <p>The Leela Palace Bengaluru has been "ranked 10 among the top ten city hotel’s in Asia by Travel & Leisure Reader’s choice award 2019." The hotel is nestled amidst seven acres of lush gardens and a sparkling lagoon, built in an art-deco form drawing inspiration from the architectural style of the Royal Palace of Mysore. Its copper domes, arches and ornate ceilings reflect the grandeur of palaces of a bygone era. From the hand-woven carpets to the priceless brass antiques, from the hand-picked crystal to the finest bone china, everything is the best the world has to offer. Situated on Old Airport Road, it is in close proximity to the Embassy Golf Links and convenient to Whitefield & Electronic City business districts and an easy stroll from the KGA golf course. The Leela Palace Bengaluru has all the attributes of comfort, technology and design associated with one of the leading hotels of the world.</p>
+            </div>
+            <div class="hotel-block">
+                <a href="bhotel2.html"><img src="../Images/benguluru/bh2.jpg" alt="Hotel 2"></a>
+                <h3>Bengaluru Racecourse,an IHG Hotel</h3>
+                <p>Conveniently located along Seshadri Road across Bangalore Turf Club, Holiday Inn Bengaluru Racecourse is about 34 km from Kempegowda International Airport. We are only one kilometre away from Kempegowda Bus Station and Bengaluru City Junction Railway Station. We are also close to attractions like Cubbon Park, UB City, Chinnaswamy cricket stadium, and corporate buildings like Canara Bank, RBI, NABARD, and State Bank of India Offices. The 272 well-appointed rooms include 22 premium rooms with a private balcony and 22 suites with an individual living room and facilities like a microwave and dining area to attract long-stay guests. Travel easily to other parts of the city with readily available taxis in the area. Enjoy free WIFI throughout the hotel. Kick-start your day with a power breakfast and enjoy our high-quality bedding and power shower experience to recharge after a fun-filled day of activities..</p>
+            </div>
+            <div class="hotel-block">
+                <a href="bhotel3.html"><img src="../Images/benguluru/bh3.jpg" alt="Hotel 3"></a>
+                <h3>Taj Yeshwantpur,Bengaluru</h3>
+                <p>Convergence has a new address. Heres where sophisticated business travellers can find intelligent business environs and vibrant leisure options in one hot spot. Where spirited style meets Bangalore's largest convention spaces. At Taj Yeshwantpur, Bengaluru. Superbly located with 327 rooms near the modern metro terminus, minutes from Yeshwantpur Railway Terminus and just 35 km from the airport. Soak in the space thats only 15km from Bangalores city centre. Standing tall in 3.56 acres. Adjoining the Peenya industrial estate - near Bangalore International Exhibition Centre, famed educational institutions, modern hospitals and luxury residential complexes. Feel the pulse of an international business and conferencing destination. With 18000 sq ft of banqueting space, an independent convention centre and parking for 400 cars. Technology is woven through it.</p>
+            </div>
+        </div>
+
+        <div class="section-title">Places to Visit in Bengaluru</div>
+        <div class="places">
+            <div class="place-block">
+                <img src="../Images/benguluru/bl1.jpg" alt="Place 1">
+                <h3>Visvesvaraya Industrial and Technological Museum</h3>
+                <p>Visvesvaraya Museum is fun for children and adults. It houses a treasure trove of machines and artifacts related to science and technology. Its interactive exhibits make this a great place for children to develop a love for science. There are exhibition Halls on Engines, Electricity, Fun Science, Space, Biotechnology & Electronics. Animated dinosaurs,life-size model of Wright Brothers' flyer and Steam locomotive are other attractions.There are interesting shows like 'Science on a sphere', 'Taramandal', '3d film show' and 'Science show' held at regular intervals. The 'Science for Kids' gallery is the new addition to the Museum.</p>
+            </div>
+            <div class="place-block">
+               <img src="../Images/benguluru/bl2.jpg" alt="Place 2">
+                <h3>Lalbagh Botanical Garden</h3>
+                <p>Lalbagh Botanical Garden is an botanical garden in Bangalore, India, with an over 200-year history. Lalbagh is a 240 acres garden. It has a lake , lotus ponds ,rose garden, park and a glass house. From Flower show point of view , the glass house is the best part otherwise there is not much to enjoy as such. Plays and music events take place during the evening in local language. The campus is huge. Lot of walking which is a healthy activity in today's world. Management need to focus more on the landscaping and beautification of the campus . There are lots of start ups who put up shops here selling plants , flowers , gardening/landscaping services , bonsai plant etc. I found one startup selling bottled water having high alkaline value and Vitamin B12 ,Brand Name is "Fusion Mont Cool".</p>
+            </div>
+            <div class="place-block">
+                <img src="../Images/benguluru/bl3.jpg" alt="Place 3">
+                <h3>Bannerughatta Biological Park</h3>
+                <p>Bannerghatta National Park is a national park in India, located near Bangalore, Karnataka. It was founded in 1970 and declared as a national park in 1974. In 2002, a small portion of the park became a zoological garden, the Bannerghatta Biological Park. Wikipedia
+                    Address: Bannerghatta Rd, Bengaluru,One of the main attractions in Bangalore, and nothing much impressive in all aspects.National park safari was worth mentioning and also the butterfly garden and reserves gives you a bit overwhelmed.
+                    Ticket prices are high especially for the safari, but folks please prefer the air conditioned coaches..</p>
+            </div>
+        </div>
+    </div>
+    <script>
+    var user = JSON.parse(localStorage.getItem("loggedUser"))
+    var loginadd = document.getElementById("login-btn");
+    console.log(user); 
+    loginadd.innerHTML = user;
+</script>
+    <footer>
+        © 2024 All rights reserved (INDIAN TOURISM).
+    </footer>
+</body>
+</html>

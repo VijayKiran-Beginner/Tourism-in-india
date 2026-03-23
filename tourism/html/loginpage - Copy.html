@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body
+        {
+            /*justify-items: center;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            height: 100vh;
+            margin: 0%;
+            background-image: url("sky-only.jpg");*/
+            background-image: url("sky-only.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        
+        .input_field
+        {                  
+            outline: none;  
+            width: calc(100% - 40px);
+            padding: 10px 20px;
+            font-size: 15px;  
+            background-color: transparent;
+            border: 1px solid silver;
+            border-radius: 5px;
+            border-color: silver;
+            
+        }
+        
+        .input_field:focus
+        {
+            border-color: rgba(32, 88, 186, 0.56);
+            box-shadow: 0px 0px 10px rgba(32, 88, 186, 0.5);
+        }
+
+
+        .login-form
+        {
+            text-align: center;
+            padding: 40px 20px;
+            width: 100%;
+            max-width: 300px;
+            height: 350px;
+            background-color: white;
+            box-shadow:5px  15px 20px 20px   rgba(0, 0, 0, 0.1); 
+            border-radius: 5px;   
+            animation: slide-in 1.5s forwards;   
+        }
+
+        @keyframes slide-in {
+            from{
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to{
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .Login-button 
+        {
+            margin-top: 20px;
+            font-size: 20px;
+            padding: 15px;
+            cursor: pointer;
+            width: 100%;
+            background-color: rgba(32, 88, 186, 0.831);
+            border-radius: 5px;
+            color: white;
+            font-weight: 750;
+            border-color: rgba(32, 88, 186, 0.831);
+            transition: box-shadow 0.3s ease 0s;
+        }
+        .Login-button:hover
+        {
+            background-color: rgba(30, 90, 180, 0.931);
+        }
+
+        .Login-button:active
+        {
+            background-color: rgba(32, 88, 186, 0.831);;
+            transform: scale(0.98);
+        }
+
+        .Remember-me 
+        {
+            display: flex;
+            font-size: 17px;
+            align-items: left;
+          
+            
+        }
+        .Remember 
+        {
+            display: flex;
+            font-size: 17px;
+            align-items: left;
+            
+        }
+        .Remember a
+        {
+            text-decoration: none;
+            margin-left:60px; 
+            padding:20px;
+            color: blue;
+        }
+        .Remember-me a
+        {
+            text-decoration: none;
+            color: blue;
+        }
+
+        .Remember-me a:hover
+        {
+            text-decoration: underline;
+        }
+
+        .Remember-me a:active
+        {
+            color:#AA955D;
+        }
+
+        
+        .forgot-pass
+        {
+            margin-left: auto;
+        }
+        .sign-up 
+        {
+            margin-top: 20px;
+              
+        }
+        .sign-up a
+        {
+            color:blue;
+            text-decoration:none;
+
+        }
+        .sign-up a:hover
+        {
+            text-decoration: underline;
+        }
+
+        .sign-up a:active
+        {
+            color: #AA955D;
+        }
+
+        /* password show hide css*/
+        .input-box
+        {
+            width: 100%;
+            position: relative;
+            margin: 20px 0;
+
+        }
+        /*.input-box input
+        {
+            outline: 0;
+            border: 0;
+            width: 100%;
+            padding: 10px 20px;
+        }*/
+
+        .password img
+        {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            right: 15px;
+            top:  50%;
+            position: absolute;
+            transform: translateY(-50%);
+            opacity: 0.5;
+            transform: opacity 0.3s;
+        }
+        .input-box img:hover
+        {
+            opacity: 1;
+        }
+        body
+        {
+            margin: 0;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+        /*.bg-video
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }*/
+        .navbar
+        {
+            
+            display: flex;
+            padding: 20px 20px;
+            align-items: center;
+            width: 97%;            
+        }
+        .navbar a
+        {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: #0C154D ;
+            border-radius: 20px;
+        }
+
+        .navbar a:hover
+        {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease 0s;
+        }
+
+        .navbar a:active
+        {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        
+        .menubar
+        {
+            width: 100%;
+           /* background-color: black;*/
+            
+        }
+        .login-btn
+        {
+           float: right;
+
+        }
+        .rig
+        {
+            display: flex;
+            justify-content: center;
+            padding:70px;
+        }
+        .log
+        {
+            background-color:rgb(107, 170, 241);
+            border-radius: 10px;
+
+        }
+    </style>
+</head>
+<body>
+    <header class="log">
+        <nav class="navbar">
+            <div class="menubar">
+               <a href="home.html">HOME</a>
+               <a href="new1.html">ACCOMODATIONS</a>
+               <a href="aboutus.html">ABOUT</a>
+               <a href="help2.html">HELP</a></div>
+               <div class="login-btn"><a href="loginpage - Copy.html">LOGIN</a></div></div></nav>
+    </header>   
+<body>
+   <div class="rig">
+    <form class="login-form" action="register.html">
+         
+        
+            <div class="input-box username">
+                <img src="" alt="">
+                <input type="text" placeholder="Username" class="input_field" required>
+            </div>
+            <div class="input-box password">
+                <input type="password" placeholder="Password" class="input_field" id="pass" required>
+                <img src="eye-close.png" id="eyeimg">
+            </div>
+            <div class="Remember-me">
+                <input type="checkbox" name="remember-me" id="remember-me"><label for="rememberme">Remember me</label>
+                
+            </div>
+                <input type="submit" class="Login-button">
+
+            <div class="sign-up" >
+                Don't have an Account?<a href="register - Copy.html">Sign up</a>
+            </div>
+            <div class="Remember"><a href="#">Forgotten password?</a></div>
+                    
+        
+        </form>
+        </div>
+        </body>
+    <script>
+        let password = document.getElementById("pass");
+        let eyeicon = document.getElementById("eyeimg");
+
+        eyeicon.onclick = function(){
+            if(password.type == "password")
+            {
+                password.type = "text";
+                eyeicon.src = "eye-open.png"
+            }
+            else
+            {
+                password.type = "password";
+                eyeicon.src = "eye-close.png";
+            }
+        }
+    </script>
+    
+</body>
+</html>
